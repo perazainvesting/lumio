@@ -1,0 +1,2244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumio Relojes</title>
+<meta name="description" content="Relojes originales por encargo: marcas suizas, japonesas y americanas, nuevos y con su caja, y entrega inmediata en los que tenemos. Entrega en Caracas y Maracaibo, envío gratis a toda Venezuela y más de 300 modelos por encargo.">
+<meta name="theme-color" content="#0A1310">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1310'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%23C9B07A' stroke-width='5'/%3E%3Cpath d='M32 18v15l9 6' fill='none' stroke='%23EEF2E6' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/hero-poster.webp">
+<style>
+@font-face{font-family:"Jost";src:url(fonts/jost.woff2) format("woff2");font-weight:300 600;font-display:swap}
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda.woff2) format("woff2");font-weight:400 700;font-display:swap}
+
+/* Lumio: el verde de una esfera de noche y el verde luminoso del lume de las agujas */
+:root{
+  --bg:#0A1310; --surface:#121E1A; --ink:#F2EEE5; --muted:#AEB3A8;
+  --accent:#C9B07A; --accent-ink:#0A1310; --line:rgba(201,176,122,.28);
+  --paper:#EFEBE3; --paper-2:#E4DED2; --paper-ink:#0D1714; --paper-muted:#56584F;
+  --sand:#DCCFB6; --sage:#C3CDBE; --clay:#DCC2B1; --steel:#CBD0D3; --straw:#E2D7AE;
+  --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font:"Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+  --step-small:clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body:clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead:clamp(1.375rem, 1.15rem + 0.8vw, 1.875rem);
+  --step-head:clamp(2.5rem, 1.4rem + 4.2vw, 5.25rem);
+  --step-display:clamp(5.5rem, 2rem + 15vw, 17rem);
+  --gutter:clamp(16px, 2.2vw, 32px);
+  --gap:clamp(96px, 12vw, 200px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:300;font-size:var(--step-body);line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4,h5{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-0.015em;line-height:1;text-wrap:balance;font-optical-sizing:auto}
+button{font:inherit;color:inherit}
+a,button,input,select,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.paper{--bg:var(--paper);--ink:var(--paper-ink);--muted:var(--paper-muted);--surface:var(--paper-2);background:var(--paper);color:var(--ink);color-scheme:light}
+.wrap{padding-inline:max(var(--gutter), env(safe-area-inset-left, 0px))}
+
+/* Botones: rectos, un solo relleno */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border:1px solid transparent;border-radius:0;background:var(--ink);color:var(--bg);font-weight:500;font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s var(--ease), background-color .2s}
+.paper .btn,.modal-box .btn{color:var(--paper)}
+.btn-accent,.btn-gold,.paper .btn-accent,.modal-box .btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover,.btn-gold:hover{background:#D8C291}
+.btn-ghost,.paper .btn-ghost,.modal-box .btn-ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb, var(--ink) 35%, transparent)}
+.btn-ghost:hover{background:color-mix(in srgb, var(--surface) 80%, var(--ink))}
+.btn-sm{min-height:44px;padding:0 18px;font-size:var(--step-small)}
+.link{background:none;border:0;padding:0;color:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* ===== Cabecera ===== */
+header{position:absolute;top:0;left:0;right:0;z-index:5}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
+.logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--ink)}
+.logo{flex-direction:column;align-items:flex-start;gap:2px;line-height:1}
+.wm{display:inline-flex;align-items:center;font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:.3em;color:var(--ink)}
+.wm-o{width:.92em;height:.92em;margin-left:.02em;color:var(--ink)}
+.wm-m,.wm-h{transform-origin:50px 50px;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.wm-sub{font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--accent);padding-left:.15em}
+nav#main-nav{display:flex;align-items:center;gap:28px}
+nav#main-nav a{text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding-block:10px;position:relative}
+nav#main-nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+nav#main-nav a:hover::after,nav#main-nav a[aria-current="page"]::after{transform:scaleX(1)}
+.hdr-actions{display:flex;align-items:center;gap:10px}
+.favbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;background:var(--surface);border:0;cursor:pointer;font-size:var(--step-small);font-weight:500}
+.favbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.favbtn b{color:var(--accent);font-weight:500}
+.menubtn{display:none;width:48px;height:48px;border:0;background:var(--surface);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.menubtn span{display:block;width:20px;height:2px;background:var(--ink);transition:transform .25s}
+
+/* ===== Franja de confianza ===== */
+.topline{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 40px;padding-block:10px;margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+.topline span:first-child{color:var(--accent)}
+
+/* ===== Portada: frase partida por un marco ===== */
+.hero{position:relative}
+.hero-stage{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-line{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;padding-inline:var(--gutter);font-size:var(--step-head);line-height:.92;pointer-events:none;z-index:2}
+.hero-line > *{pointer-events:auto;display:block;max-width:calc(35vw - var(--gutter) - 24px);font-family:var(--serif);font-size:inherit;font-weight:400;letter-spacing:-0.02em;line-height:.98;margin:0}
+.hero-line .h-right{font-style:italic}
+.hero-line .h-right{text-align:right;color:var(--accent)}
+.reel{position:absolute;left:50%;top:52%;width:min(26vw, 420px);aspect-ratio:3/4;transform:translate(-50%,-50%);z-index:1}
+.reel-track{position:absolute;inset:0}
+.frame{position:absolute;inset:0;display:block;width:100%;background:none;border:0;padding:0;cursor:pointer;color:var(--ink);text-align:center;opacity:0;visibility:hidden;transform:translateY(28px) scale(.97);transition:opacity .9s var(--ease), transform 1.3s cubic-bezier(.16,1,.3,1), visibility 0s .9s}
+.frame.on{opacity:1;visibility:visible;transform:none;transition:opacity .9s var(--ease), transform 1.3s cubic-bezier(.16,1,.3,1), visibility 0s}
+.frame.out{transform:translateY(-28px) scale(.97)}
+.frame img{position:absolute;inset:0 0 13%;width:100%;height:87%;object-fit:contain;transition:transform .8s var(--ease)}
+/* el video de portada: su fondo oscuro se funde con la página por los bordes */
+.frame video{position:absolute;inset:0 0 13%;width:100%;height:87%;object-fit:cover;-webkit-mask-image:radial-gradient(closest-side, #000 52%, transparent 96%);mask-image:radial-gradient(closest-side, #000 52%, transparent 96%);transition:transform .8s var(--ease)}
+.frame .cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:12px;font-size:var(--step-small);font-weight:500;color:var(--muted)}
+.frame .cap b{color:var(--ink)}
+.frame .cap b{font-weight:500}
+.hero-foot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding:0 var(--gutter) 32px;max-width:calc(35vw - 24px)}
+.hero-foot p{font-size:var(--step-body)}
+.hero-foot .actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-count{font-size:var(--step-small);color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ===== Vitrina: foto fija, lista activa ===== */
+#catalogo{padding-block:var(--gap)}
+.vit{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter)}
+.vit-photo{grid-column:1 / span 5;position:sticky;top:8vh;align-self:start;aspect-ratio:4/5;overflow:hidden}
+.vit-photo img{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;opacity:0;transform:scale(1.04);transition:opacity .35s, transform .7s var(--ease)}
+.vit-photo img.on{opacity:1;transform:none}
+.vit-photo .fit{position:absolute;left:0;bottom:16px;background:var(--accent);color:var(--accent-ink);padding:8px 12px;font-size:var(--step-small);font-weight:500}
+.vit-side{grid-column:7 / span 6}
+.vit-side h2{font-size:var(--step-head)}
+.vit-intro{margin-top:24px;max-width:34em}
+.wristbox{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;background:var(--surface);padding:18px 20px}
+.wristbox label{font-weight:500}
+.wristbox .ctl{display:flex;align-items:center;background:var(--bg)}
+.wristbox .ctl button{width:48px;height:48px;border:0;background:none;cursor:pointer;font-size:24px;line-height:1}
+.wristbox .ctl button:hover{background:var(--ink);color:var(--bg)}
+.wristbox input{width:4.2em;height:48px;border:0;background:none;text-align:center;font:inherit;font-weight:500;font-size:var(--step-lead);color:inherit;-moz-appearance:textfield}
+.wristbox input::-webkit-inner-spin-button{-webkit-appearance:none}
+.wristbox output{font-weight:500}
+.wristbox output b{font-weight:500}
+.vlist{list-style:none;margin:40px 0 0;padding:0}
+.vrow{border-top:2px solid transparent}
+.vrow + .vrow{margin-top:4px}
+.vhead{width:100%;min-height:64px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:10px 0;background:none;border:0;cursor:pointer;text-align:left;color:var(--muted);transition:color .2s}
+.vhead .nm{font-size:var(--step-lead);font-weight:500;letter-spacing:-0.025em;line-height:1.05}
+.vhead .nm small{display:block;font-size:var(--step-small);font-weight:500;letter-spacing:0;margin-top:4px}
+.vhead .pr .soon i{font-style:normal}
+.vhead .pr{font-size:var(--step-body);font-weight:500;font-variant-numeric:tabular-nums}
+.vrow.on .vhead, .vhead:hover{color:var(--ink)}
+.vrow .tag{display:inline-block;margin-left:8px;padding:2px 8px;font-size:var(--step-small);font-weight:500;letter-spacing:0;background:var(--accent);color:var(--accent-ink);vertical-align:middle}
+.vbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.vrow.on .vbody{grid-template-rows:1fr}
+.vbody > div{overflow:hidden;visibility:hidden;transition:visibility 0s .35s}
+.vrow.on .vbody > div{visibility:visible;transition:none}
+.vbody p{max-width:34em;padding-top:4px}
+.vbody .meta{color:var(--muted);font-size:var(--step-small);margin-top:8px}
+.vbody .row-actions{display:flex;flex-wrap:wrap;gap:8px;padding:16px 0 20px}
+.vrow-img{display:none}
+.vnote{margin-top:32px;font-size:var(--step-small);color:var(--muted);max-width:40em}
+
+/* ===== Por encargo: tarjetas que cruzan una foto fija ===== */
+.scard{flex:none;width:min(720px, 70vw);height:min(560px, 62svh);display:grid;grid-template-rows:68% 32%;border:0;padding:0;cursor:pointer;text-align:left;color:var(--paper-ink);transition:transform .3s var(--ease)}
+.scard .ph{position:relative;overflow:hidden}
+.scard .ph img{position:absolute;inset:6% 0;width:100%;height:88%;object-fit:contain;opacity:0;transform:scale(.97);transition:opacity .6s var(--ease), transform .9s cubic-bezier(.16,1,.3,1)}
+.scard .ph img.cut{opacity:1;transform:none}
+.scard .pn{display:grid;grid-template-columns:1fr minmax(0, 15em);align-items:end;gap:20px;padding:24px 28px}
+.scard .pn h3{font-size:var(--step-lead);letter-spacing:-0.025em}
+.scard .pn p{font-size:var(--step-small);text-align:right}
+.scard.end{background:var(--accent);display:flex;flex-direction:column;justify-content:space-between;padding:32px;width:min(520px, 60vw)}
+.scard.end h3{font-size:var(--step-head)}
+.scard.end span{font-weight:500}
+
+/* ===== Dos formas de comprar ===== */
+.paths{padding-block:0 clamp(48px, 6vw, 96px)}
+.paths-in{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.path{display:flex;flex-direction:column;gap:10px;min-height:260px;padding:clamp(24px, 3vw, 40px);background:var(--surface);color:var(--ink);text-decoration:none;transition:background-color .25s, transform .25s var(--ease)}
+.path:hover{background:color-mix(in srgb, var(--surface) 84%, var(--ink))}
+.path:active{transform:scale(.99)}
+.path .path-k{font-weight:500;color:var(--accent);font-size:var(--step-body)}
+.path b{font-size:var(--step-lead);font-weight:500;letter-spacing:-0.02em;line-height:1.1;max-width:18em}
+.path span{color:var(--muted)}
+.path .path-go{margin-top:auto;color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:5px}
+/* el encargo manda: tarjeta clara con filete dorado */
+.path.path-main{background:var(--paper);color:var(--paper-ink);border:1px solid var(--accent)}
+.path-main span{color:var(--paper-muted)}
+.path-main .path-k{color:#6F5C33}
+.path-main .path-go{color:var(--paper-ink);text-decoration-color:var(--accent)}
+.path.path-main:hover{background:var(--paper-2)}
+/* entrega inmediata: segundo camino, oscuro con filete y un punto de lume */
+.path.path-now{background:transparent;color:var(--ink);border:1px solid rgba(201,176,122,.35)}
+.path-now .path-k::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:1px;box-shadow:0 0 0 4px rgba(201,176,122,.22);animation:lume 2.4s ease-in-out infinite}
+@keyframes lume{50%{box-shadow:0 0 0 7px rgba(201,176,122,0)}}
+.path.path-now:hover{background:color-mix(in srgb, var(--surface) 70%, transparent)}
+
+/* ===== Busca por estilo ===== */
+.styles{padding-block:clamp(72px, 9vw, 140px)}
+.styles-top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);align-items:end}
+.styles-top h2{grid-column:1 / span 6;font-size:var(--step-head)}
+.styles-top p{grid-column:8 / span 5}
+.style-row{margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;aspect-ratio:3/4;padding:16px;border:0;background:var(--surface);cursor:pointer;text-align:left;overflow:hidden;transition:background-color .25s, transform .25s var(--ease)}
+.stile img{position:absolute;left:10%;right:10%;top:6%;width:80%;height:66%;object-fit:contain;opacity:0;transition:opacity .5s, transform .7s cubic-bezier(.16,1,.3,1)}
+.stile img.cut{opacity:1}
+.stile:hover{background:color-mix(in srgb, var(--surface) 82%, var(--ink))}
+.stile:active{transform:scale(.98)}
+.stile b{font-size:var(--step-lead);font-weight:500;letter-spacing:-0.02em;line-height:1.1}
+.stile span{font-size:var(--step-small);color:var(--muted)}
+.stile[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.stile[aria-pressed="true"] span{color:var(--accent-ink)}
+
+/* ===== ¿No está en el catálogo? ===== */
+.ask{background:var(--accent);color:var(--accent-ink);padding-block:clamp(64px, 8vw, 120px)}
+.ask-in{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:24px;align-items:end}
+.ask h2{grid-column:1 / span 6;font-size:var(--step-head)}
+.ask p{grid-column:8 / span 5;max-width:30em}
+.ask .actions{grid-column:8 / span 5}
+
+/* ===== Catálogo por encargo ===== */
+#catalogo-encargo{padding-block:var(--gap)}
+.enc-top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);align-items:end}
+.enc-top h2{grid-column:1 / span 6;font-size:var(--step-head)}
+.enc-top .enc-lead{grid-column:8 / span 5}
+.tools{margin-top:48px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:16px}
+.search{grid-column:1 / span 5;display:flex;align-items:center;background:var(--surface);min-height:56px;padding:0 6px 0 18px;gap:10px}
+.search svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;flex:none;color:var(--muted)}
+.search input{flex:1;min-width:0;height:54px;background:none;border:0;font:inherit;color:inherit;outline:none}
+.search input::placeholder{color:var(--muted)}
+.search input::-webkit-search-cancel-button{display:none}
+.search:focus-within{outline:3px solid var(--accent);outline-offset:0}
+.search-x{width:44px;height:44px;border:0;background:none;cursor:pointer;font-size:24px;color:var(--muted)}
+.encf{grid-column:7 / span 6;display:flex;flex-direction:column;gap:12px}
+.encf-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.encf-l{font-weight:500;min-width:6.5em}
+.encf-sel{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:44px;padding:0 16px;border:0;background:var(--surface);cursor:pointer;font-size:var(--step-small);font-weight:500;transition:background-color .2s, color .2s}
+.chip:hover{background:color-mix(in srgb, var(--surface) 75%, var(--ink))}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.sort{display:inline-flex;align-items:center;gap:8px;font-size:var(--step-small);font-weight:500}
+.sort select{min-height:44px;border:0;background:var(--surface);color:inherit;font:inherit;padding:0 12px}
+.count{margin-top:40px;color:var(--muted);font-size:var(--step-small)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:var(--gutter);margin-top:16px}
+.cw{position:relative;display:flex}
+.card{flex:1;display:flex;flex-direction:column;border:0;padding:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.card .art{position:relative;aspect-ratio:1;background:var(--paper);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card .art img{width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s var(--ease)}
+.card .art svg{width:60%;height:auto}
+.badge{position:absolute;left:10px;top:10px;padding:4px 10px;background:var(--paper-ink);color:var(--paper);font-size:var(--step-small);font-weight:500}
+.badge.transit{background:var(--accent);color:var(--accent-ink)}
+.card .info{display:flex;flex-direction:column;gap:2px;padding:14px 0 6px}
+.brandname{font-size:var(--step-small);color:var(--muted);font-weight:500}
+.gtag{font-size:var(--step-small);color:var(--muted)}
+.card .name{font-weight:500;font-size:var(--step-body);letter-spacing:-0.02em;line-height:1.1}
+.card .ref{font-size:var(--step-small);color:var(--muted)}
+.card .ref + .ref{display:none}
+.price{font-weight:500;font-size:var(--step-body);font-variant-numeric:tabular-nums;margin-top:6px}
+.card .est{font-size:var(--step-small);color:var(--muted);margin-top:6px}
+.card .est + .price{margin-top:0}
+.card .dep{font-size:var(--step-small);font-weight:500}
+.bsp{font-size:var(--step-small);color:var(--muted)}
+.card .more{display:none}
+.heart{position:absolute;right:8px;top:8px;width:44px;height:44px;border:0;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--paper-ink);transition:transform .2s}
+.heart svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.heart[aria-pressed="true"] svg{fill:currentColor}
+.heart.pop svg{animation:pop .6s cubic-bezier(.16,1,.3,1)}
+@keyframes pop{from{transform:scale(.82)}to{transform:none}}
+.empty,.loading-cat{grid-column:1/-1;padding:40px;background:var(--surface);text-align:center}
+.enc-more{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:48px}
+.enc-more[hidden]{display:flex!important}
+.enc-more[hidden] #enc-more{display:none}
+.count-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;margin-top:40px}
+.count-row .count{margin:0}
+.any{font-size:var(--step-small);color:var(--muted);text-decoration:none}
+.any b{color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--accent)}
+.any:hover b{color:var(--accent)}
+.note{margin-top:24px;color:var(--muted);font-size:var(--step-small);max-width:44em}
+
+/* ===== Cómo funciona: un verbo a la vez ===== */
+.verbs > section{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.verbs .vph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.verbs .dark .vph{filter:brightness(.5) saturate(.85)}
+.verbs .paper .vph{inset:10% 4% 10% auto;width:48%;height:80%;object-fit:contain;mix-blend-mode:multiply}
+.verbs .paper .verb{text-align:left;padding-left:var(--gutter)}
+.verbs .dark .vph.obj{inset:10% auto 10% 4%;width:44%;height:80%;object-fit:contain;filter:none}
+.verbs .obj-panel .verb{text-align:right;padding-right:var(--gutter)}
+.verbs .obj-panel .say{left:auto;right:var(--gutter)}
+.verb{position:sticky;top:calc(50svh - .425em);margin:calc(50svh - .425em) 0 0;text-align:center;font-size:var(--step-display);font-weight:400;font-style:italic;letter-spacing:-0.03em;line-height:.85;z-index:1}
+.dark .verb{color:var(--accent)}
+.verbs .say{position:absolute;left:var(--gutter);bottom:32px;max-width:26em;z-index:2;font-size:var(--step-body);padding:16px 20px;background:rgba(8,20,16,.72);color:#EEF2E6}
+.verbs .paper .say{background:var(--paper-2);color:var(--paper-ink)}
+.verbs-title{position:absolute;right:var(--gutter);top:32px;z-index:2;font-size:var(--step-lead);font-weight:500;letter-spacing:-0.02em}
+
+/* ===== Nosotros: dos hermanos, dos ciudades ===== */
+#contacto{padding-block:var(--gap)}
+.two-top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);align-items:end}
+.two-top h2{grid-column:1 / span 7;font-size:var(--step-head)}
+.two-top p{grid-column:9 / span 4}
+.cities{margin-top:64px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:32px;align-items:start}
+.deliver{grid-column:1 / span 5;font-size:var(--step-lead);font-weight:500;letter-spacing:-0.015em;line-height:1.2}
+.city{display:flex;flex-direction:column;gap:18px}
+.city{background:var(--surface);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:16px}
+.city .phone{font-size:var(--step-small);color:var(--muted);font-variant-numeric:tabular-nums;user-select:all}
+.city:nth-child(2){grid-column:7 / span 3}
+.city:last-child{grid-column:10 / span 3}
+.city figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:var(--surface)}
+.city figure.rv{opacity:1;transform:none;clip-path:inset(12% 0 0 0)}
+.city figure.rv img{transform:scale(1.12);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.city figure.rv.in{clip-path:inset(0);transition:clip-path 1.2s cubic-bezier(.16,1,.3,1)}
+.city figure.rv.in img{transform:none}
+.city figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.city h3{font-size:var(--step-lead);letter-spacing:-0.025em}
+.city p{max-width:30em}
+.city .actions{display:flex;flex-wrap:wrap;gap:8px}
+.citypick{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.citybtn{min-height:44px;padding:0 16px;border:0;background:var(--surface);cursor:pointer;font-size:var(--step-small);font-weight:500}
+.citybtn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pays{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pays span{padding:6px 12px;background:var(--surface);font-size:var(--step-small);font-weight:500}
+
+/* ===== Preguntas: una franja por pregunta ===== */
+.faq-head{min-height:40svh;display:flex;align-items:flex-end;background:var(--accent);color:var(--accent-ink);padding:48px var(--gutter)}
+.faq-head h2{font-size:var(--step-head)}
+.band{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);padding:56px var(--gutter)}
+.band{border-top:1px solid var(--line)}
+.band:nth-child(even){background:var(--surface)}
+.band h3{grid-column:1 / span 5;font-size:var(--step-lead);letter-spacing:-0.02em;line-height:1.1}
+.band p{grid-column:7 / span 6;max-width:36em}
+.band a{text-underline-offset:4px}
+.faq-more{padding:40px var(--gutter);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* ===== Pie: invitación sobre el nombre recortado ===== */
+footer{position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;padding-top:clamp(64px, 10vh, 120px)}
+.ft{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:32px}
+.ft-inv{grid-column:1 / span 7;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.ft-inv h2{font-size:var(--step-head)}
+.ft-links{grid-column:10 / span 3;display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.ft-links a{text-decoration:none;font-weight:500}
+.ft-links a:hover{text-decoration:underline;text-underline-offset:4px}
+.ft-legal{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:var(--step-small);padding-top:64px;position:relative;z-index:1}
+.ft-legal nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+.ft-legal a{text-underline-offset:3px}
+.credits{font-size:var(--step-small);max-width:60em;margin-top:12px;position:relative;z-index:1}
+.credits a{text-underline-offset:3px}
+.bigname{font-family:var(--serif);font-size:clamp(9rem, 36vw, 40rem);font-weight:400;letter-spacing:-0.04em;line-height:.8;white-space:nowrap;margin:24px 0 -0.3em -0.04em;user-select:none}
+
+/* ===== Flotantes ===== */
+.wa-float{position:fixed;right:max(16px, env(safe-area-inset-right, 0px));bottom:calc(16px + env(safe-area-inset-bottom, 0px));z-index:40;height:56px;padding:0 20px 0 16px;display:flex;align-items:center;gap:10px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:500;font-size:var(--step-small);transition:transform .2s var(--ease)}
+.wa-float svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cmp-tray{position:fixed;left:max(16px, env(safe-area-inset-left, 0px));bottom:calc(16px + env(safe-area-inset-bottom, 0px));z-index:40;display:flex;align-items:center;gap:12px;background:var(--paper);color:var(--paper-ink);padding:8px 8px 8px 16px;font-size:var(--step-small);font-weight:500}
+.cmp-tray .btn{min-height:40px;padding:0 14px;font-size:var(--step-small)}
+.cmp-tray .x{background:none;border:0;cursor:pointer;text-decoration:underline;color:inherit}
+
+/* ===== Ventanas ===== */
+body.modal-open{overflow:hidden}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(5,14,11,.78);overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;padding:max(16px, env(safe-area-inset-top, 0px)) 16px 16px;animation:fade .2s ease}
+.modal-box{--bg:var(--paper);--ink:var(--paper-ink);--muted:var(--paper-muted);--surface:var(--paper-2);position:relative;width:100%;max-width:1120px;margin-block:24px;background:var(--paper);color:var(--ink);color-scheme:light;box-shadow:0 40px 100px rgba(0,0,0,.5);animation:rise .3s var(--ease)} /* taste-skill-ignore: sombra de la ventana emergente, que sí flota */
+.modal-box.narrow{max-width:860px}
+@keyframes fade{from{opacity:0}}
+@keyframes rise{from{transform:translateY(24px);opacity:0}}
+.close{position:absolute;top:12px;right:12px;z-index:3;width:48px;height:48px;border:0;background:var(--paper-ink);color:var(--paper);font-size:26px;line-height:1;cursor:pointer}
+.mpad{padding:clamp(28px, 5vw, 64px)}
+.mpad.alt{background:var(--paper-2)}
+.head{display:flex;flex-direction:column;gap:16px;margin-bottom:32px;padding-right:56px}
+.head h2{font-size:clamp(2rem, 1.2rem + 2.6vw, 3.5rem)}
+.head .sub,.sub{max-width:40em}
+.eyebrow{font-size:var(--step-small);color:var(--muted);font-weight:500} /* taste-skill-ignore: texto normal dentro de las ventanas, no etiqueta */
+.small{font-size:var(--step-small);color:var(--muted)}
+.prose{max-width:46em;display:flex;flex-direction:column;gap:14px}
+.prose h3{font-size:1.5rem;letter-spacing:-0.02em;margin-top:16px}
+.prose ul,.prose ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:32px}
+.tabs .chip{display:inline-flex;align-items:center;text-decoration:none}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:var(--step-small)}
+th,td{padding:12px 14px;text-align:left;vertical-align:top}
+tbody tr:nth-child(odd){background:var(--paper-2)}
+th{font-weight:500}
+td.num{font-variant-numeric:tabular-nums}
+details{background:var(--paper-2);margin-bottom:6px}
+summary{cursor:pointer;list-style:none;padding:18px 56px 18px 20px;position:relative;font-weight:500;font-size:1.15rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;top:14px;font-size:26px}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 20px}
+.steps{list-style:decimal;margin:0 0 40px;padding-left:1.4em;display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr));gap:24px 40px}
+.steps li{display:flex;flex-direction:column;gap:4px;padding-left:4px}
+.steps li::marker{font-weight:500}
+.steps strong{font-weight:500}
+.order{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr));gap:24px}
+form.req,.quote{background:var(--paper-2);padding:28px;display:flex;flex-direction:column;gap:16px}
+form.req h3,.quote h3{font-size:1.75rem}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:500;font-size:var(--step-small)}
+.field input{min-height:52px;padding:0 14px;border:2px solid transparent;background:var(--paper);color:inherit;font:inherit;font-size:16px}
+.field input:focus{border-color:var(--paper-ink)}
+.field input:focus-visible{outline:2px solid var(--paper-ink);outline-offset:2px}
+.two{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 170px), 1fr));gap:14px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 140px), 1fr));gap:8px}
+.qgrid div{background:var(--paper);padding:16px;display:flex;flex-direction:column;gap:4px}
+.qgrid span{font-size:var(--step-small);color:var(--muted)}
+.qgrid strong{font-size:1.75rem;font-weight:500;font-variant-numeric:tabular-nums}
+.err{color:#9A2B12;font-weight:500}
+.sizer{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;margin-bottom:20px}
+.sizer .field{width:240px}
+.sizeres{display:flex;flex-direction:column;gap:4px}
+.sizeres strong{font-size:2rem;font-weight:500}
+.why{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr));gap:28px}
+.why div{display:flex;flex-direction:column;gap:8px}
+.why h3{font-size:1.3rem}
+svg.ic{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.draft{background:var(--paper-2);padding:12px 16px}
+
+/* Ficha del reloj */
+.crumb{display:flex;flex-wrap:wrap;gap:8px;padding:20px 72px 0 clamp(20px, 4vw, 40px);font-size:var(--step-small);color:var(--muted)}
+.crumb a{color:inherit}
+.dlg{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr))}
+.dlg .gal{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;min-height:360px}
+.dlg .gal img{width:min(440px, 96%);height:auto;mix-blend-mode:multiply}
+.dlg .gal svg{width:min(260px, 80%);height:auto}
+.thumbs{display:flex;gap:8px}
+.thumbs button{width:60px;height:60px;border:2px solid transparent;background:var(--paper-2);padding:2px;cursor:pointer}
+.thumbs button[aria-pressed="true"]{border-color:var(--paper-ink)}
+.thumbs img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.dlg .body{padding:clamp(20px, 4vw, 40px);display:flex;flex-direction:column;gap:16px;min-width:0}
+.dlg h3{font-size:clamp(2rem, 1.2rem + 2.4vw, 3.25rem);padding-right:48px}
+.tagl{font-size:var(--step-lead);font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.dlg .price{font-size:2rem}
+.quickbar{display:flex;flex-wrap:wrap;gap:6px}
+.quickbar > *{min-height:44px;padding:0 14px;display:inline-flex;align-items:center;background:var(--paper-2);border:0;cursor:pointer;font-size:var(--step-small);font-weight:500;text-decoration:none;color:inherit}
+.quickbar > *:hover{background:var(--paper-ink);color:var(--paper)}
+.apart{background:var(--accent);color:var(--accent-ink);padding:14px 16px;font-weight:500}
+.story{padding:clamp(40px, 7vw, 88px) clamp(20px, 6vw, 72px);background:var(--bg);color:#EEF2E6;display:flex;flex-direction:column;gap:16px}
+.story .eyebrow{color:#B4C3B7} /* taste-skill-ignore: ficha del reloj */
+.story h4{font-size:clamp(1.9rem, 1.1rem + 2.4vw, 3.25rem);max-width:18em}
+.story p:last-child{max-width:44em;color:#D7E0D6}
+.feats{padding:clamp(28px, 5vw, 56px)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));gap:28px}
+.feat{display:flex;flex-direction:column;gap:8px}
+.feat .k{font-size:2.5rem;font-weight:500;letter-spacing:-0.04em;line-height:1}
+.feat h5{font-size:1.2rem;letter-spacing:-0.01em}
+.feat p{font-size:var(--step-small)}
+.qa{padding:clamp(28px, 5vw, 56px);background:var(--paper-2);display:flex;flex-direction:column;gap:12px}
+.qa h4{font-size:clamp(1.5rem, 1rem + 1.5vw, 2.25rem)}
+.qa #d-a{max-width:44em}
+.specsec{padding:clamp(28px, 5vw, 56px)}
+.spec-cols{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr));gap:32px;align-items:start}
+dl.specs{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:var(--step-small)}
+dl.specs dt{color:var(--muted);font-weight:500}
+dl.specs dd{margin:0;overflow-wrap:anywhere}
+.box{display:flex;gap:14px;align-items:flex-start;background:var(--paper-2);padding:18px}
+.buybar{display:none}
+.similar{padding:clamp(24px, 4vw, 40px);background:var(--paper-2)}
+.similar .row{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr));gap:10px;margin-top:14px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--paper);border:0;padding:8px;cursor:pointer;color:inherit;text-align:left}
+.mini:hover{outline:2px solid var(--paper-ink)}
+.mini img,.mini svg{width:64px;height:64px;object-fit:contain;flex:none;mix-blend-mode:multiply}
+.mini span{display:flex;flex-direction:column;font-size:var(--step-small);min-width:0}
+.mini b{font-weight:500}
+.nextw{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 20px;width:100%;padding:28px clamp(20px, 4vw, 40px);background:var(--bg);color:#EEF2E6;border:0;cursor:pointer;text-align:left}
+.nextw .eyebrow{color:#B4C3B7} /* taste-skill-ignore: ficha del reloj */
+.nextw .nx{font-size:clamp(1.5rem, 1rem + 1.6vw, 2.25rem);font-weight:500;letter-spacing:-0.03em;grid-column:1}
+.nextw .arrow{grid-column:2;grid-row:1 / span 2;font-size:36px;color:var(--accent);transition:transform .25s var(--ease)}
+.cmp th{width:150px}
+.cmp td{min-width:170px}
+.cmp img{width:110px;height:auto;mix-blend-mode:multiply}
+
+/* ===== Entradas ===== */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.pre{opacity:0;transform:translateY(20px)}
+.cw{transition:opacity .6s var(--ease), transform .6s var(--ease)}
+
+
+/* ===== Texturas: grano fino, guilloché y minutero (detalles del mundo del reloj) ===== */
+body::after{content:"";position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+.guilloche{position:absolute;left:50%;top:52%;width:min(78vw, 1100px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:0;pointer-events:none;color:var(--accent);opacity:.09}
+.guilloche g{transform-origin:500px 500px;animation:dial 240s linear infinite}
+@keyframes dial{to{transform:rotate(360deg)}}
+.ticks{height:18px;color:var(--muted);opacity:.55;background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='18'%3E%3Crect x='0' y='0' width='2' height='18' fill='%23000'/%3E%3Crect x='12' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='24' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='36' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='48' y='0' width='1' height='8' fill='%23000'/%3E%3C/svg%3E") repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='18'%3E%3Crect x='0' y='0' width='2' height='18' fill='%23000'/%3E%3Crect x='12' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='24' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='36' y='0' width='1' height='8' fill='%23000'/%3E%3Crect x='48' y='0' width='1' height='8' fill='%23000'/%3E%3C/svg%3E") repeat-x}
+.ticks-wrap{padding-block:0 clamp(40px, 5vw, 72px)}
+.ask{position:relative;overflow:hidden}
+.ask::before{content:"";position:absolute;right:-12vw;top:50%;width:min(70vw, 900px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(14,38,32,.09) 0deg .6deg, transparent .6deg 3deg);-webkit-mask:radial-gradient(closest-side, transparent 30%, #000 31%, #000 98%, transparent);mask:radial-gradient(closest-side, transparent 30%, #000 31%, #000 98%, transparent);pointer-events:none}
+.ask-in{position:relative}
+.path{position:relative;overflow:hidden;border:1px solid var(--line)}
+.path::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;aspect-ratio:1;border-radius:50%;background:repeating-conic-gradient(from 0deg, currentColor 0deg .5deg, transparent .5deg 6deg);opacity:.12;-webkit-mask:radial-gradient(closest-side, transparent 62%, #000 63%);mask:radial-gradient(closest-side, transparent 62%, #000 63%);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.stile::after{content:"";position:absolute;inset:auto 16px 56px auto;width:46px;aspect-ratio:1;border-radius:50%;border:1px solid currentColor;opacity:.14}
+@media (prefers-reduced-motion: reduce){.guilloche g{animation:none}}
+
+
+/* ===== Movimiento: entrada de la portada, revelados por sección, brillo en botones ===== */
+@media (prefers-reduced-motion: no-preference){
+  .topline,.bar{animation:dropIn .9s cubic-bezier(.16,1,.3,1) both}
+  .bar{animation-delay:.08s}
+  .hero-line > *{animation:lineUp 1.1s cubic-bezier(.16,1,.3,1) both}
+  .hero-line .h-right{animation-delay:.12s}
+  .reel{animation:reelIn 1.4s cubic-bezier(.16,1,.3,1) .1s both}
+  .guilloche{animation:dialIn 2.2s cubic-bezier(.16,1,.3,1) both}
+  .hero-foot > *{animation:fadeUp .9s cubic-bezier(.16,1,.3,1) both}
+  .hero-foot > *:nth-child(1){animation-delay:.3s}
+  .hero-foot > *:nth-child(2){animation-delay:.42s}
+  .hero-foot > *:nth-child(3){animation-delay:.54s}
+  [data-rv="line"]{clip-path:inset(0 0 100% 0);transform:translateY(.35em);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d, 0ms)}
+  [data-rv="fade"]{opacity:.3;transform:translateY(26px);transition:opacity .9s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d, 0ms)}
+  [data-rv="rise"]{transform:translateY(48px) scale(.97);opacity:.4;transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1);transition-delay:var(--d, 0ms)}
+  [data-rv].rv-in{clip-path:inset(0 0 -20% 0);transform:none;opacity:1}
+}
+@keyframes dropIn{from{opacity:0;transform:translateY(-12px)}}
+@keyframes lineUp{from{clip-path:inset(0 0 100% 0);transform:translateY(.4em)}to{clip-path:inset(0 0 -20% 0);transform:none}}
+@keyframes reelIn{from{opacity:0;transform:translate(-50%,-46%) scale(.94)}}
+@keyframes dialIn{from{opacity:0;transform:translate(-50%,-50%) scale(.86) rotate(-12deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}}
+.btn-accent{position:relative;overflow:hidden}
+.btn-accent::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);transform:skewX(-18deg);transition:left .8s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.btn-ghost:hover{background:color-mix(in srgb, var(--ink) 8%, transparent);border-color:var(--accent)}
+.card .art{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.vrow .vhead .nm{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.vrow.on .vhead .nm{transform:translateX(10px)}
+.band h3{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+@media (max-width: 900px){@keyframes reelIn{from{opacity:0;transform:scale(.94)}}}
+
+
+/* ===== Acabado deluxe: luz de vitrina, sombras de objeto y dorado metálico ===== */
+body{background:radial-gradient(120% 70% at 50% 0%, #10201B 0%, var(--bg) 55%) fixed, var(--bg)}
+.hero-stage{background:radial-gradient(42% 55% at 50% 52%, rgba(201,176,122,.16) 0%, rgba(201,176,122,.05) 45%, transparent 75%)}
+.frame img{filter:drop-shadow(0 38px 42px rgba(0,0,0,.6)) drop-shadow(0 10px 14px rgba(0,0,0,.4))}
+.vit-photo{background:radial-gradient(closest-side, rgba(201,176,122,.14), transparent 75%)}
+.vit-photo img{filter:drop-shadow(0 40px 46px rgba(0,0,0,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.vrow-img img{filter:drop-shadow(0 22px 26px rgba(0,0,0,.5))}
+.stile{background:radial-gradient(90% 70% at 50% 28%, #1B2B26 0%, var(--surface) 70%);box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 24px 48px -24px rgba(0,0,0,.8)}
+.stile img{filter:drop-shadow(0 22px 24px rgba(0,0,0,.6))}
+.path{box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 30px 60px -30px rgba(0,0,0,.85)}
+.path-now{box-shadow:0 30px 60px -30px rgba(0,0,0,.85)}
+.city{box-shadow:0 24px 50px -28px rgba(0,0,0,.85)}
+.paper .card .art{background:radial-gradient(80% 70% at 50% 40%, #FFFFFF 0%, var(--paper) 75%)}
+.paper .card .art img{mix-blend-mode:multiply}
+.paper .card{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.paper .card:hover .art{box-shadow:0 24px 40px -24px rgba(13,23,20,.35)}
+.btn-accent,.btn-gold{background:linear-gradient(180deg, #DCC795 0%, #C9B07A 48%, #B39859 100%);box-shadow:0 1px 0 rgba(255,255,255,.45) inset, 0 -1px 0 rgba(0,0,0,.15) inset, 0 12px 28px -12px rgba(201,176,122,.55)}
+.btn-accent:hover,.btn-gold:hover{background:linear-gradient(180deg, #E6D3A6 0%, #D2BA86 48%, #BCA166 100%)}
+.wa-float{background:linear-gradient(180deg, #DCC795, #B39859);box-shadow:0 16px 36px -12px rgba(0,0,0,.6)}
+.verbs .dark .vph{filter:brightness(.42) saturate(.9) contrast(1.05)}
+.verbs section.dark::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%, transparent 40%, rgba(5,10,8,.55) 100%);pointer-events:none}
+.verbs .verb{text-shadow:0 10px 40px rgba(0,0,0,.45)}
+.modal-box{box-shadow:0 60px 120px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(201,176,122,.25)}
+.faq-head{background:linear-gradient(180deg, #D8C291 0%, #C9B07A 60%, #B79D62 100%)}
+.ask{background:linear-gradient(180deg, #D3BC88 0%, #C9B07A 55%, #B39859 100%)}
+footer.paper{background:radial-gradient(120% 80% at 50% 0%, #F6F3EC 0%, var(--paper) 60%)}
+
+
+/* ===== Apple + lujo: barra translúcida, piezas que reaccionan al scroll, mosaicos y detalles de relojería ===== */
+:root{--r-tile:28px;--r-img:22px;--spring:cubic-bezier(.22,1,.36,1)}
+header{position:fixed;transition:background-color .5s var(--spring), backdrop-filter .5s, -webkit-backdrop-filter .5s, transform .5s var(--spring)}
+header .topline{transition:margin .5s var(--spring), opacity .4s}
+header.scrolled{background:rgba(10,19,16,.72);-webkit-backdrop-filter:saturate(170%) blur(22px);backdrop-filter:saturate(170%) blur(22px);box-shadow:0 1px 0 rgba(201,176,122,.18)}
+header.scrolled .topline{margin-top:-41px;opacity:0;pointer-events:none}
+header.scrolled .bar{padding-block:12px}
+.bar{transition:padding .5s var(--spring)}
+@media (prefers-reduced-transparency: reduce){header.scrolled{background:var(--bg);-webkit-backdrop-filter:none;backdrop-filter:none}}
+/* botones píldora con respuesta inmediata al tocar */
+.btn,.chip,.citybtn,.favbtn,.menubtn,.quickbar > *{border-radius:999px}
+.btn{transition:transform .35s var(--spring), background-color .3s, border-color .3s, box-shadow .3s}
+.btn:active,.chip:active,.stile:active,.path:active{transform:scale(.97);transition-duration:.1s}
+/* mosaicos con esquinas redondeadas, como las páginas de producto */
+.path,.stile,.city,.vit-photo,.wristbox,.search,.empty,.loading-cat,.scard{border-radius:var(--r-tile)}
+.card .art{border-radius:var(--r-img)}
+.verbs .say{border-radius:18px}
+.modal-box{border-radius:32px;overflow:hidden}
+.close{border-radius:999px}
+form.req,.quote,details,.box,.qa,.similar,.mini,.thumbs button,.qgrid div,.field input{border-radius:18px}
+/* bisel con minutero que gira con el scroll */
+.bezel{position:absolute;left:50%;top:48.5%;width:min(34vw, 540px);aspect-ratio:1;transform:translate(-50%,-50%) rotate(var(--bz, 0deg));z-index:0;color:var(--accent);opacity:.55;pointer-events:none;transition:transform .15s linear}
+.reel{transform:translate(-50%,-50%) scale(var(--hs, 1));transition:transform .15s linear}
+.hero-line{opacity:var(--ho, 1)}
+/* fondo de caja grabado en el pie */
+footer{position:relative}
+.caseback{position:absolute;right:max(var(--gutter), 4vw);top:clamp(48px, 8vh, 96px);width:min(30vw, 320px);color:var(--paper-ink);opacity:.18;animation:dial 120s linear infinite;pointer-events:none}
+@media (prefers-reduced-motion: reduce){.caseback{animation:none}.bezel,.reel{transition:none}}
+/* fichas técnicas como de manufactura en la vitrina */
+.vbody .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.vbody .meta span{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;letter-spacing:.04em}
+@media (max-width: 900px){
+  .bezel{display:none}
+  .reel{transform:none}
+  .caseback{width:42vw;top:auto;bottom:22vh;opacity:.12}
+  header .topline{display:none}
+  header .bar{padding-block:12px}
+  header{background:rgba(10,19,16,.78);-webkit-backdrop-filter:saturate(170%) blur(20px);backdrop-filter:saturate(170%) blur(20px)}
+  .hero-stage{padding-top:calc(96px + env(safe-area-inset-top, 0px))}
+  /* en el teléfono los revelados solo se desplazan: nada queda oculto ni apagado */
+  [data-rv]{clip-path:none!important;opacity:1!important}
+  [data-rv="line"]{transform:translateY(14px)}
+  [data-rv].rv-in{transform:none}
+  .rv{opacity:1!important}
+}
+
+header.open ~ .wa-float,body:has(header.open) .wa-float{opacity:0;pointer-events:none}
+/* Fotos pequeñas del catálogo (data:): nunca más grandes que su tamaño real para que no se pixelen */
+.dlg .gal img[src^="data:"]{width:auto;max-width:min(400px, 92%);height:auto}
+.stile img[src^="data:image/jpeg"],.card .art img[src^="data:image/jpeg"]{max-width:440px;max-height:440px}
+/* ===== Carrito: panel lateral translúcido, el pedido se cierra por WhatsApp ===== */
+.cartbtn b{min-width:1ch}
+.cartbtn.bump{animation:bump .5s var(--spring)}
+@keyframes bump{40%{transform:scale(1.12)}}
+.cart-scrim{position:fixed;inset:0;z-index:58;background:rgba(5,10,8,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:fade .3s ease}
+.cart{position:fixed;top:0;right:0;bottom:0;z-index:59;width:min(460px, 100vw);display:flex;flex-direction:column;background:rgba(18,30,26,.92);-webkit-backdrop-filter:saturate(170%) blur(24px);backdrop-filter:saturate(170%) blur(24px);border-left:1px solid var(--line);border-radius:28px 0 0 28px;box-shadow:-40px 0 80px -30px rgba(0,0,0,.7);padding:max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) 24px;animation:cartIn .55s var(--spring)}
+@keyframes cartIn{from{transform:translateX(100%)}}
+.cart-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cart-head h2{font-size:var(--step-lead)}
+.cart-head .close{position:static;background:var(--surface);color:var(--ink)}
+.cart-list{list-style:none;margin:0;padding:8px 0;overflow-y:auto;flex:1}
+.cart-item{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-item img{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.5))}
+.cart-item b{display:block;font-family:var(--serif);font-weight:500;font-size:1.1rem;line-height:1.2}
+.cart-item small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.cart-item .pr{font-family:var(--serif);font-size:1.1rem;text-align:right}
+.qty{display:inline-flex;align-items:center;gap:2px;margin-top:8px;background:var(--bg);border-radius:999px}
+.qty button{width:36px;height:36px;border:0;border-radius:999px;background:none;color:var(--ink);cursor:pointer;font-size:18px}
+.qty button:hover{background:var(--surface)}
+.qty span{min-width:2ch;text-align:center;font-variant-numeric:tabular-nums}
+.cart-rm{display:block;margin:6px 0 0 auto;background:none;border:0;color:var(--muted);font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.cart-empty{padding:40px 0;color:var(--muted);text-align:center}
+.cart-foot{display:flex;flex-direction:column;gap:14px;padding-top:16px;border-top:1px solid var(--line)}
+.cart-sum{display:grid;grid-template-columns:1fr auto;gap:6px 16px;margin:0;font-size:15px}
+.cart-sum dt{color:var(--muted)}
+.cart-sum dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.cart-sum .tot{font-family:var(--serif);font-size:1.4rem;color:var(--ink)}
+.cart-go{width:100%}
+@media (prefers-reduced-motion: reduce){.cart,.cart-scrim{animation:none}}
+
+/* La historia del reloj y «siguiente reloj» van siempre sobre noche, aunque estén dentro de la ventana clara */
+.modal-box .story,.modal-box .nextw{background:radial-gradient(90% 120% at 50% 0%, #15251F 0%, #0A1310 70%)}
+.paper .arr,.modal-box .arr{color:#8A6D33}
+/* ===== Teléfono ===== */
+@media (max-width: 900px){
+  nav#main-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);padding:8px var(--gutter) 24px}
+  header.open nav#main-nav{display:flex}
+  nav#main-nav a{font-size:var(--step-lead);font-weight:500;padding-block:12px}
+  .menubtn{display:flex}
+  header.open .menubtn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.open .menubtn span:nth-child(2){opacity:0}
+  header.open .menubtn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .favtxt{display:none}
+  .hero{height:auto}
+  .hero-stage{position:relative;height:auto;min-height:0;display:block;padding:84px 0 40px}
+  .hero-line{position:static;display:block;transform:none;font-size:10vw;padding-top:16px}
+  .hero-line > *{max-width:none}
+  .hero-line .h-right{margin-top:4px}
+  .reel{position:relative;left:auto;top:auto;transform:none;width:auto;max-width:420px;aspect-ratio:auto;margin:16px auto;height:min(calc(100vw - 32px), 420px);overflow:hidden}
+  .hero-foot{max-width:none;padding-bottom:0}
+  .hero-foot .actions{justify-content:flex-start}
+  .vit{display:block}
+  .vit-photo{display:none}
+  .vrow-img{display:block;aspect-ratio:4/3;margin-top:8px;position:relative}
+  .vrow-img img{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain}
+  .scard{width:100%;height:auto;grid-template-rows:auto auto}
+  .scard .ph{aspect-ratio:4/3}
+  .scard .pn{grid-template-columns:1fr;min-height:140px;gap:8px}
+  .scard .pn p{text-align:left}
+  .scard.end{width:100%;gap:32px}
+  .enc-top h2,.enc-top .enc-lead,.search,.encf,.styles-top h2,.styles-top p,.ask h2,.ask p,.ask .actions{grid-column:1 / -1}
+  .styles-top p{margin-top:16px}
+  .paths-in{grid-template-columns:1fr}
+  .path{min-height:0}
+  .path b{font-size:1.25rem}
+  .style-row{grid-template-columns:repeat(2,1fr)}
+  .topline{gap:2px 16px}
+  .topline span:not(:first-child){display:none}
+  .enc-top .enc-lead{margin-top:20px}
+  .encf-l{min-width:0;width:100%}
+  .chip{padding:0 14px}
+  .grid{grid-template-columns:repeat(2, 1fr);gap:24px 12px}
+  .card .name,.price{font-size:1.05rem}
+  .verb{font-size:24vw}
+  .verbs .paper .vph,.verbs .dark .vph.obj{inset:8% 8% 30%;width:84%;height:62%}
+  .verbs .obj-panel .say{left:16px;right:16px}
+  .verbs .say{left:16px;right:16px;bottom:16px}
+  .two-top h2,.two-top p{grid-column:1 / -1}
+  .two-top p{margin-top:20px}
+  .deliver,.city:nth-child(2),.city:last-child{grid-column:1 / -1}
+  .band{display:block;padding:32px 20px}
+  .band p{margin-top:12px}
+  .faq-head{min-height:30svh;padding:32px 20px}
+  .faq-head h2{font-size:13vw}
+  .ft-inv,.ft-links{grid-column:1 / -1}
+  .ft-inv h2{font-size:11vw}
+  .ft-inv .btn{width:100%}
+  .ft-links{flex-direction:row;flex-wrap:wrap;gap:8px 20px}
+  .bigname{font-size:34vw}
+  .wa-float span{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv,.pre{opacity:1!important;transform:none!important}
+}
+
+/* ===== Afinado del estudio: el oro como filete, nombres en serif, movimiento expo ===== */
+:root{--sec:clamp(80px, 10vw, 160px);--sec-tight:clamp(48px, 6vw, 88px);--expo:cubic-bezier(.16,1,.3,1)}
+/* Nombres y precios en Bodoni; el texto chico en peso normal */
+.card .name,.vhead .nm,.stile b,.path b,.frame .cap b{font-family:var(--serif);font-weight:500;letter-spacing:-0.005em}
+.card .price,.vhead .pr,#d-price,#bb-price{font-family:var(--serif);font-weight:500;font-variant-numeric:lining-nums tabular-nums}
+.brandname,.card .ref,.card .est,.card .dep,.bsp{font-weight:400}
+/* Portada: salida directa a pedir */
+.hero-wa{font-size:var(--step-small);color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px}
+.hero-wa b{color:var(--accent);font-weight:500}
+/* Video de portada: máscara elíptica sin halo gris y luz de vitrina detrás */
+.frame video{-webkit-mask-image:radial-gradient(48% 46% at 50% 47%, #000 62%, transparent 100%);mask-image:radial-gradient(48% 46% at 50% 47%, #000 62%, transparent 100%);filter:contrast(1.06) brightness(.94)}
+.reel::before{content:"";position:absolute;inset:-18%;background:radial-gradient(closest-side, rgba(201,176,122,.16), transparent 70%);z-index:-1;pointer-events:none}
+/* Elige, Reserva, Recíbelo: el texto se integra al video con un filete */
+.verbs .say{background:none;padding:0 0 0 20px;border-left:1px solid var(--accent);color:var(--ink);font-family:var(--serif);font-size:var(--step-lead);line-height:1.35;max-width:22em;text-shadow:0 2px 24px rgba(0,0,0,.7)}
+.verbs .say::before{content:attr(data-step);display:block;font:500 11px/1 var(--font);letter-spacing:.3em;color:var(--accent);margin-bottom:12px;text-shadow:none}
+.verbs .say .btn{display:flex;width:max-content;margin-top:24px;font-family:var(--font);text-shadow:none}
+.verbs .dark .vph{filter:brightness(.55) saturate(.8) contrast(1.12) sepia(.12)}
+.verbs section.dark::after{background:radial-gradient(ellipse at center, transparent 40%, rgba(10,19,16,.85) 100%)}
+/* Tarjeta del catálogo: jerarquía de joyería */
+.badge{background:transparent;color:var(--paper-ink);border:1px solid color-mix(in srgb, var(--accent) 70%, transparent);padding:3px 9px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.badge.transit{background:transparent;color:var(--paper-ink)}
+#enc-grid .badge:not(.transit){display:none}
+.card .gtag{display:none}
+.brandname{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-muted)}
+.card .prow{display:block;margin-top:6px}
+.card .est{display:inline;margin:0 6px 0 0}
+.card .price{display:inline;margin:0}
+.card .dep{color:#6F5C33;font-weight:400}
+.paper .card .art{background:radial-gradient(70% 60% at 50% 45%, #F7F4EE 0%, var(--paper) 80%)}
+.paper .card .art img{filter:contrast(1.04)}
+.card .more{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:var(--step-small);font-weight:500;letter-spacing:.04em}
+.card .arr{display:inline-block;color:var(--accent);transition:transform .6s var(--expo)}
+.card:hover .arr,.card:focus-visible .arr{transform:translateX(4px)}
+/* Botón flotante de WhatsApp como sello */
+.wa-float{height:48px;padding:0 18px 0 14px;background:rgba(10,19,16,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--accent);border:1px solid var(--line);font-weight:500;letter-spacing:.06em;box-shadow:0 16px 36px -14px rgba(0,0,0,.7);transition:opacity .4s, transform .6s var(--expo), background .4s, color .4s}
+.wa-float:hover{background:linear-gradient(180deg, #DCC795, #B39859);color:var(--accent-ink)}
+.wa-float.idle{opacity:0;transform:translateY(16px);pointer-events:none}
+body:has(.modal:not([hidden])) .wa-float{display:none}
+main .grid{padding-bottom:72px}
+.enc-more,.vnote{padding-bottom:88px}
+/* Solicitar cualquier modelo: botón propio y franja de vitrina */
+.count-row .any{min-height:44px;display:inline-flex;align-items:center;border:1px solid var(--accent)}
+.ask{background:radial-gradient(120% 90% at 85% 50%, #1A2924 0%, var(--bg) 70%);color:var(--ink);border-block:1px solid var(--line)}
+.ask::before{background:repeating-conic-gradient(from 0deg, rgba(201,176,122,.14) 0deg .6deg, transparent .6deg 3deg)}
+.ask h2 em{font-style:italic;color:var(--accent)}
+.ask h2{grid-column:1 / span 7;font-size:clamp(2.5rem, 4.6vw, 4.5rem);line-height:1.02}
+.ask p,.ask .actions{grid-column:9 / span 4}
+.ask-lead{display:block;margin-bottom:.35em;font:500 13px/1.2 var(--font);letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+.empty-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+/* Filtros con lenguaje de lujo y un hilo dorado al seleccionar */
+.search{background:transparent;border-bottom:1px solid color-mix(in srgb, var(--paper-ink) 30%, transparent);min-height:60px;padding-left:0}
+.search:focus-within{outline:0;border-bottom-color:var(--paper-ink);box-shadow:0 1px 0 var(--accent)}
+.chip,.citybtn{position:relative;overflow:hidden;background:transparent;border:1px solid color-mix(in srgb, currentColor 22%, transparent);border-radius:999px;font-weight:400;letter-spacing:.04em;transition:background-color .5s var(--expo), color .5s}
+.chip[aria-pressed="true"],.citybtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--expo)}
+.chip[aria-pressed="true"]::after{transform:scaleX(1)}
+.sort select{-webkit-appearance:none;appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23C9B07A'/%3E%3C/svg%3E") right 4px center/10px no-repeat;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0 22px 0 0}
+.stile[aria-pressed="true"]::after{opacity:.6;transform:rotate(90deg);transition:transform 1.2s var(--expo), opacity .6s}
+/* Ficha: se abre y se cierra con ceremonia */
+.modal{animation:mFade .6s var(--expo)}
+.modal-box{animation:mRise .9s var(--expo)}
+@keyframes mFade{from{opacity:0}}
+@keyframes mRise{from{opacity:0;transform:translateY(40px) scale(.985);clip-path:inset(6% 0 0 0)}}
+.modal.closing{animation:mOut .35s cubic-bezier(.4,0,1,1) forwards}
+.modal.closing .modal-box{animation:mBoxOut .35s cubic-bezier(.4,0,1,1) forwards}
+@keyframes mOut{to{opacity:0}}
+@keyframes mBoxOut{to{opacity:0;transform:translateY(16px) scale(.99)}}
+[data-modal="ficha"] #d-main img,[data-modal="ficha"] #d-main svg{animation:galIn 1.2s var(--expo) .12s both}
+@keyframes galIn{from{opacity:0;transform:scale(.94);filter:blur(6px)}}
+[data-modal="ficha"] #d-title{animation:fadeUp .9s var(--expo) .25s both}
+[data-modal="ficha"] #d-price{animation:fadeUp .9s var(--expo) .33s both}
+[data-modal="ficha"] .dlg .body > .actions{animation:fadeUp .9s var(--expo) .41s both}
+.thumbs button{position:relative}
+.thumbs button::after{content:"";position:absolute;left:4px;right:4px;bottom:-6px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--expo)}
+.thumbs button[aria-pressed="true"]::after{transform:scaleX(1)}
+/* Busca por estilo bien encuadrado; el círculo pasa a índice */
+.stile{aspect-ratio:4/5;border:1px solid var(--line)}
+.stile img{top:4%;height:70%;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
+.stile::after{inset:12px 12px auto auto;width:8px}
+/* Corazón: un aro dorado al guardar */
+.heart::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--accent);opacity:0;pointer-events:none}
+.heart.pop[aria-pressed="true"]::after{animation:ring .9s var(--expo)}
+@keyframes ring{from{opacity:.7;transform:scale(.7)}to{opacity:0;transform:scale(1.7)}}
+/* Botón fantasma: se llena de oro desde la izquierda */
+.btn-ghost{position:relative;overflow:hidden;isolation:isolate}
+.btn-ghost::before{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb, var(--accent) 14%, transparent);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--expo)}
+/* Vitrina: etiquetas en filete, fotos que se asientan y ritmo uniforme */
+.vrow .tag,.vit-photo .fit{display:inline-block;background:transparent;color:var(--accent);border:1px solid var(--line);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:3px 8px}
+.vrow .tag{display:block;width:max-content;margin:6px 0 0;font-family:var(--font);line-height:1.4}
+.vit-photo img{transition:opacity .9s var(--expo), transform 1.4s var(--expo);transform:scale(1.04) translateY(10px)}
+.vit-photo img.on{transform:none}
+.paths{padding-block:0 var(--sec-tight)}
+.styles{padding-block:var(--sec-tight) var(--sec)}
+#catalogo,#catalogo-encargo{padding-block:var(--sec)}
+section.paper + section::before{content:"";display:block;height:14px;background:repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 12px);margin:0 0 var(--sec)}
+.paper + #catalogo{padding-top:0}
+/* Foco visible sin perder brillo */
+.paper :focus-visible,.modal-box :focus-visible{outline-color:var(--paper-ink)}
+.btn-accent:focus-visible,.wa-float:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 5px var(--accent)}
+
+/* Hover de lujo solo con puntero fino */
+@media (hover: hover) and (pointer: fine){
+  .btn:hover{transform:translateY(-2px)}
+  .logo:hover .wm-m{transform:rotate(360deg)}
+  .logo:hover .wm-h{transform:rotate(30deg)}
+  .frame:hover img{transform:scale(1.05)}
+  .frame:hover video{transform:scale(1.04)}
+  .scard:hover{transform:translateY(-6px)}
+  .path:hover{transform:translateY(-3px)}
+  .path:hover::after{transform:rotate(30deg)}
+  .stile:hover img{transform:translateY(-6px) scale(1.04)}
+  .stile:hover{box-shadow:inset 0 0 0 1px var(--accent), 0 34px 60px -24px rgba(0,0,0,.9)}
+  .heart:hover{transform:scale(1.08)}
+  .wa-float:hover{transform:translateY(-3px)}
+  .city:hover figure img{transform:scale(1.04)}
+  .nextw:hover .arrow{transform:translateX(8px)}
+  .btn-accent:hover::after{left:120%}
+  .btn-ghost:hover::before{transform:scaleX(1)}
+  .card:hover .art{transform:translateY(-4px)}
+  .card:hover .art img{transform:scale(1.04);transition-duration:.9s;transition-timing-function:var(--expo)}
+  .band:hover h3{transform:translateX(8px)}
+  /* destello de cristal */
+  .card .art::after,.stile::before{content:"";position:absolute;inset:-20%;z-index:1;pointer-events:none;background:linear-gradient(115deg, transparent 40%, rgba(255,250,235,.55) 50%, transparent 60%);mix-blend-mode:soft-light;transform:translateX(-70%);opacity:0;transition:transform 1.3s var(--expo), opacity .6s}
+  .card:hover .art::after,.stile:hover::before{transform:translateX(70%);opacity:1}
+}
+/* Al tacto: una presión corta en vez del hover */
+.btn:active,.chip:active,.citybtn:active,.card:active .art{transform:scale(.98);transition-duration:.12s}
+.btn-accent:active::after,.btn-accent:focus-visible::after{left:120%}
+
+@media (prefers-reduced-motion: no-preference){
+  .vbody > div > *{opacity:0;transform:translateY(10px);transition:opacity .6s var(--expo), transform .8s var(--expo)}
+  .vrow.on .vbody > div > *{opacity:1;transform:none;transition-delay:.12s}
+  .empty{animation:fadeUp .9s var(--expo) both}
+  /* parallax de videos y fotos grandes */
+  @supports (animation-timeline: view()){
+    .verbs .dark .vph:not(.obj){animation:plx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .verbs .vph.obj,.verbs .paper .vph{animation:plxS linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .city figure img{animation:plxT linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  }
+}
+@keyframes plx{from{transform:translateY(-6%) scale(1.14)}to{transform:translateY(6%) scale(1.14)}}
+@keyframes plxS{from{transform:translateY(4%)}to{transform:translateY(-4%)}}
+@keyframes plxT{from{translate:0 -4%}to{translate:0 4%}}
+
+/* Portada con profundidad: la frase se abre al bajar, el reloj sigue al cursor, el carrete cambia en iris */
+@media (prefers-reduced-motion: no-preference) and (min-width: 901px){
+  @supports (animation-timeline: scroll()){
+    .hero-line > :first-child{animation:lineUp 1.1s var(--expo) both, splitL linear both;animation-timeline:auto, scroll(root);animation-range:normal, 0 100svh}
+    .hero-line > .h-right{animation:lineUp 1.1s var(--expo) .12s both, splitR linear both;animation-timeline:auto, scroll(root);animation-range:normal, 0 100svh}
+    .reel-track{animation:reelOut linear both;animation-timeline:scroll(root);animation-range:0 100svh}
+  }
+  .reel-track{transform:perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));transition:transform 1.2s var(--expo)}
+  .reel::before{translate:calc(var(--lx, 50%) - 50%) 0;transition:translate 1.2s var(--expo)}
+  .frame{clip-path:circle(0% at 50% 45%);transform:scale(1.04);transition:clip-path 1.4s var(--expo), transform 1.6s var(--expo), opacity .9s, visibility 0s 1.4s}
+  .frame.on{clip-path:circle(75% at 50% 45%);transform:none;transition:clip-path 1.4s var(--expo), transform 1.6s var(--expo), opacity .9s, visibility 0s}
+  .frame.out{clip-path:circle(75% at 50% 45%);opacity:0;transform:scale(.96)}
+  .reel::after{content:"";position:absolute;left:30%;right:30%;bottom:-18px;height:1px;background:var(--accent);opacity:.8;transform:scaleX(0);transform-origin:left;pointer-events:none}
+  .reel.tick::after{animation:tick var(--hold, 3600ms) linear forwards}
+  .reel.paused::after{animation-play-state:paused}
+}
+/* pantallas de laptop bajas: el titular sube para no pisar el texto de la portada */
+@media (min-width: 901px) and (max-height: 860px){
+  .hero-line{top:42%}
+  .hero-foot{gap:16px}
+}
+@keyframes splitL{to{translate:-8vw 0;opacity:.2}}
+@keyframes splitR{to{translate:8vw 0;opacity:.2}}
+@keyframes reelOut{to{scale:.9;opacity:.35}}
+@keyframes tick{to{transform:scaleX(1)}}
+
+@media (max-width: 900px){
+  /* portada: el logo no pisa el titular y nada se corta */
+  .hero-stage{padding:calc(150px + env(safe-area-inset-top, 0px)) 0 40px}
+  .hero-line{font-size:clamp(2.5rem, 11vw, 4.25rem);line-height:.95;padding-top:0}
+  .hero-line > *{padding-right:.08em}
+  .hero-line .h-right{text-align:right;color:var(--accent)}
+  .wm{font-size:28px}
+  .wm-sub{font-size:11px;letter-spacing:.42em}
+  .hero-foot .actions{display:grid;grid-template-columns:1fr;gap:10px;width:100%}
+  .hero-foot .actions .btn{width:100%;min-height:52px}
+  /* menú completo, en serif */
+  nav#main-nav{min-height:calc(100svh - 100%);border-top:1px solid var(--line)}
+  nav#main-nav a{min-height:56px;display:flex;align-items:center;border-bottom:1px solid var(--line);font-family:var(--serif);font-weight:400;text-transform:none;letter-spacing:0}
+  .verbs > section{height:80svh}
+  .verbs .say{font-size:1.125rem}
+  .count-row .any{width:100%;justify-content:center;min-height:52px}
+  .wa-float{width:52px;height:52px;border-radius:50%;padding:0;justify-content:center}
+  .verb{font-size:19vw;top:20svh;margin-top:20svh}
+  .verbs .say{bottom:24px}
+  .ask h2{font-size:clamp(2.25rem, 11vw, 3.25rem)}
+  .vhead .pr{text-align:right}
+  .vhead .pr .soon{display:block;font:500 11px/1.4 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .vhead .pr .soon i{display:none}
+  .ask h2,.ask p,.ask .actions{grid-column:1 / -1}
+  .stile:last-child:nth-child(odd){grid-column:1 / -1;aspect-ratio:auto;min-height:180px}
+  .stile:last-child:nth-child(odd) img{left:auto;right:6%;width:44%;top:8%;height:84%}
+  body:has(.cmp-tray:not([hidden])) .wa-float{bottom:calc(88px + env(safe-area-inset-bottom, 0px))}
+  .cmp-tray{right:max(16px, env(safe-area-inset-right, 0px))}
+  body{background-attachment:scroll}
+}
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference){
+  header.open nav#main-nav a{animation:navIn .6s var(--expo) both}
+  header.open nav#main-nav a:nth-child(2){animation-delay:60ms}
+  header.open nav#main-nav a:nth-child(3){animation-delay:120ms}
+  header.open nav#main-nav a:nth-child(4){animation-delay:180ms}
+  header.open nav#main-nav a:nth-child(5){animation-delay:240ms}
+}
+@keyframes navIn{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .path::after,.stile::after,.stile::before,.ask::before,.card .art::after,.path-now .path-k::before{transition:none;animation:none}
+  body{background-attachment:scroll}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="topline wrap"><span>100% originales y nuevos</span><span>Encargos en 2 a 4 semanas</span><span>Entrega inmediata</span><span>Envío gratis a toda Venezuela</span></p>
+  <div class="wrap bar">
+    <a class="logo" href="#inicio" aria-label="Lumio Relojes, inicio"><span class="wm" aria-hidden="true">LUMI<svg class="wm-o" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5"/><g stroke="var(--accent)" stroke-linecap="round"><line x1="50.00" y1="20.00" x2="50.00" y2="13.00" stroke-width="3"/><line x1="66.50" y1="21.42" x2="68.50" y2="17.96" stroke-width="1.6"/><line x1="78.58" y1="33.50" x2="82.04" y2="31.50" stroke-width="1.6"/><line x1="80.00" y1="50.00" x2="87.00" y2="50.00" stroke-width="3"/><line x1="78.58" y1="66.50" x2="82.04" y2="68.50" stroke-width="1.6"/><line x1="66.50" y1="78.58" x2="68.50" y2="82.04" stroke-width="1.6"/><line x1="50.00" y1="80.00" x2="50.00" y2="87.00" stroke-width="3"/><line x1="33.50" y1="78.58" x2="31.50" y2="82.04" stroke-width="1.6"/><line x1="21.42" y1="66.50" x2="17.96" y2="68.50" stroke-width="1.6"/><line x1="20.00" y1="50.00" x2="13.00" y2="50.00" stroke-width="3"/><line x1="21.42" y1="33.50" x2="17.96" y2="31.50" stroke-width="1.6"/><line x1="33.50" y1="21.42" x2="31.50" y2="17.96" stroke-width="1.6"/></g><line x1="50" y1="50" x2="50" y2="24" stroke="currentColor" stroke-width="4" stroke-linecap="round" class="wm-m"/><line x1="50" y1="50" x2="68" y2="50" stroke="currentColor" stroke-width="5" stroke-linecap="round" class="wm-h"/><circle cx="50" cy="50" r="4.5" fill="var(--accent)"/></svg></span><span class="wm-sub" aria-hidden="true">Relojes</span></a>
+    <nav aria-label="Principal" id="main-nav">
+      <a href="#por-encargo">Catálogo</a>
+      <a href="#encargo">Pide un reloj</a>
+      <a href="#relojes">Entrega inmediata</a>
+      <a href="#ayuda">Ayuda</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="favbtn" type="button" id="fav-open" aria-label="Ver favoritos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="favtxt">Favoritos</span> <b id="fav-count">0</b></button>
+      <button class="favbtn cartbtn" type="button" id="cart-open" aria-label="Ver carrito"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="favtxt">Carrito</span> <b id="cart-count">0</b></button>
+      <button class="menubtn" type="button" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" aria-labelledby="h-title">
+    <div class="hero-stage">
+      <div class="hero-line"><h1 id="h-title" class="h-left">Relojes originales<span class="sr-only"> por encargo</span></h1><p class="h-right" aria-hidden="true">por encargo</p></div>
+      <svg class="guilloche" id="guilloche" viewBox="0 0 1000 1000" aria-hidden="true"></svg>
+      <svg class="bezel" id="bezel" viewBox="0 0 600 600" aria-hidden="true"></svg>
+      <div class="reel" id="reel"><div class="reel-track" id="reel-track"></div></div>
+      <div class="hero-foot">
+        <p>Relojes nuevos y originales, con su caja. Más de 300 modelos por encargo: reservas con el 40% y llegan en 2 a 4 semanas. O llévate uno con entrega inmediata.</p>
+        <div class="actions"><a class="btn btn-accent" href="#por-encargo">Ver el catálogo</a><a class="btn btn-ghost" href="#relojes">Entrega inmediata</a></div>
+        <a class="hero-wa" href="#encargo">¿Ya sabes qué reloj quieres? <b>Pídelo aquí</b></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap ticks-wrap" aria-hidden="true"><div class="ticks"></div></div>
+  <section class="paths" aria-labelledby="t-paths">
+    <h2 id="t-paths" class="sr-only">Dos formas de comprar</h2>
+    <div class="wrap paths-in">
+      <a class="path path-main" href="#por-encargo">
+        <span class="path-k">Por encargo</span>
+        <b>Más de 300 modelos para elegir, o el que nos pidas</b>
+        <span>Reservas con el 40% y llega en 2 a 4 semanas.</span>
+        <span class="path-go">Ver el catálogo →</span>
+      </a>
+      <a class="path path-now" href="#relojes">
+        <span class="path-k">Entrega inmediata</span>
+        <b id="path-now-b">Relojes listos para entregar</b>
+        <span>En persona en Caracas y Maracaibo, o con envío gratis a toda Venezuela.</span>
+        <span class="path-go">Ver los de entrega inmediata →</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="verbs" aria-label="Cómo funciona un encargo">
+    <section class="dark" aria-labelledby="v1">
+      <video class="vph" data-src="img/mecanismo.mp4" poster="img/mecanismo-poster.webp" muted playsinline loop preload="none" aria-hidden="true"></video>
+      <h2 class="verb" id="v1">Elige</h2>
+      <p class="say" data-step="01 / 03">Busca en el catálogo o pídenos cualquier otro modelo. Te confirmamos el precio y el tiempo por WhatsApp antes de que pagues, y revisamos referencia, número de serie y grabados antes de entregarlo.</p>
+    </section>
+    <section class="dark" aria-labelledby="v2">
+      <img class="vph" src="img/engranajes.webp" alt="Engranajes y rubíes de un movimiento mecánico de cerca" width="2000" height="1810" loading="lazy">
+      <h2 class="verb" id="v2">Reserva</h2>
+      <p class="say" data-step="02 / 03">Con el 40% hacemos el pedido a tu nombre y el precio queda fijo. Pagas el 60% cuando llega. Si no logramos traerlo, te devolvemos todo.</p>
+    </section>
+    <section class="dark" aria-labelledby="v3">
+      <video class="vph" data-src="img/puesta.mp4" poster="img/puesta-poster.webp" muted playsinline loop preload="none" aria-hidden="true"></video>
+      <h2 class="verb" id="v3">Recíbelo</h2>
+      <p class="say" data-step="03 / 03">En persona en Caracas o Maracaibo. Al resto del país lo enviamos gratis por Zoom, Tealca o MRW el mismo día que pagas, con su guía de rastreo.<a class="btn btn-ghost" href="#por-encargo">Empieza por el catálogo</a></p>
+    </section>
+  </div>
+
+  <section class="styles" id="estilos" aria-labelledby="t-styles">
+    <div class="wrap">
+      <div class="styles-top">
+        <h2 id="t-styles">Busca por estilo</h2>
+        <p>Toca un estilo y te mostramos los relojes del catálogo que lo tienen. Todos llegan nuevos, con su caja y el precio confirmado antes de pagar.</p>
+      </div>
+      <div class="style-row" id="style-row" role="group" aria-label="Estilos de reloj"></div>
+    </div>
+  </section>
+
+  <section id="catalogo-encargo" class="paper" aria-labelledby="t-enc">
+    <div class="wrap">
+      <div class="enc-top">
+        <h2 id="t-enc">Catálogo por encargo</h2>
+        <p class="enc-lead">Relojes nuevos y originales que te traemos a pedido en <span class="enc-time"></span>. El precio es estimado e incluye el envío hasta Venezuela; te lo confirmamos antes de que pagues.</p>
+      </div>
+      <div class="tools">
+        <div class="search"><label for="enc-q" class="sr-only">Buscar en el catálogo por encargo</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="enc-q" type="search" placeholder="Busca marca, modelo o referencia" autocomplete="off" enterkeyhint="search"><button type="button" class="search-x" id="enc-q-x" aria-label="Borrar búsqueda" hidden>×</button></div>
+        <div class="encf" role="search" aria-label="Filtrar el catálogo por encargo">
+          <div class="encf-row"><span class="encf-l">Para</span><div class="chips" role="group" aria-label="Filtrar por género" id="enc-gender"></div></div>
+          <div class="encf-row"><span class="encf-l">Movimiento</span><div class="chips" role="group" aria-label="Filtrar por movimiento" id="enc-kind"></div></div>
+          <div class="encf-sel">
+            <label class="sort" for="enc-brand">Marca <select id="enc-brand"></select></label>
+            <label class="sort" for="enc-price">Precio <select id="enc-price"></select></label>
+            <label class="sort" for="enc-sort">Orden
+              <select id="enc-sort">
+                <option value="destacados">Recomendados</option>
+                <option value="asc">Precio: menor a mayor</option>
+                <option value="desc">Precio: mayor a menor</option>
+              </select>
+            </label>
+            <button type="button" class="btn btn-ghost btn-sm" id="enc-clear" hidden>Limpiar filtros</button>
+          </div>
+        </div>
+      </div>
+      <div class="count-row"><p class="count" id="enc-count" aria-live="polite"></p><a class="btn btn-ghost any" href="#encargo">Solicitar cualquier modelo</a></div>
+      <div class="grid" id="enc-grid"></div>
+      <div class="enc-more"><button type="button" class="btn btn-ghost" id="enc-more">Ver más relojes</button><a class="btn btn-accent" href="#encargo">Solicitar cualquier modelo</a></div>
+      <p class="note">Reserva con el 40% y paga el 60% restante cuando llegue. Si no logramos conseguirlo, te devolvemos el anticipo completo. Las condiciones están en los <a href="#terminos">términos de encargo y apartado</a>.</p>
+    </div>
+  </section>
+
+  <section id="catalogo" aria-labelledby="t-vitrina">
+    <div class="wrap vit">
+      <div class="vit-photo" id="vit-photo" aria-hidden="true"></div>
+      <div class="vit-side">
+        <h2 id="t-vitrina">Entrega inmediata</h2>
+        <p class="vit-intro">Listos para entregar, con su precio final en dólares, y vamos sumando modelos. Los que dicen «llega pronto» ya vienen en camino: apártalos con el 40%.</p>
+        <div class="wristbox">
+          <label for="wrist-cm">Mi muñeca mide</label>
+          <div class="ctl"><button type="button" id="wrist-dn" aria-label="Medio centímetro menos">−</button><input id="wrist-cm" type="number" min="12" max="26" step="0.5" value="17" inputmode="decimal"><button type="button" id="wrist-up" aria-label="Medio centímetro más">+</button></div>
+          <span>cm</span>
+          <output id="wrist-say" for="wrist-cm" aria-live="polite"></output>
+        </div>
+        <ul class="vlist" id="vlist"></ul>
+        <p class="vnote">Precios en USD<span id="bs-note"></span>. Pagas por Zelle, Binance, efectivo o en bolívares a la tasa euro del BCV del día. Fotos de referencia del modelo: recibes la misma referencia. ¿No sabes medir tu muñeca? Mira la <a href="#tallas">guía de tallas</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ask" aria-labelledby="t-ask">
+    <div class="wrap ask-in">
+      <h2 id="t-ask"><span class="ask-lead">¿No lo encuentras?</span> Te traemos <em>cualquier modelo</em></h2>
+      <p>Si el reloj que quieres no está en la página ni en el catálogo por encargo, dinos la marca y el modelo, o mándanos una foto por WhatsApp. Lo buscamos y te confirmamos precio y tiempo antes de que pagues.</p>
+      <div class="actions"><a class="btn btn-accent" href="#encargo">Solicitar un modelo</a><a class="btn btn-ghost" data-wa="foto" href="#" target="_blank" rel="noopener">Mandar una foto por WhatsApp</a></div>
+    </div>
+  </section>
+
+  <section id="contacto" aria-labelledby="t-nos">
+    <div class="wrap">
+      <div class="two-top">
+        <h2 id="t-nos">Dos hermanos, dos ciudades</h2>
+        <p>Durante años nos tocó buscar, comparar y esperar para conseguir un reloj original en Venezuela. En 2026 abrimos Lumio para hacerlo fácil: elegimos cada pieza como si fuera para nosotros, y nos gusta conversar de relojes tanto como venderlos.</p>
+      </div>
+      <div class="cities">
+        <p class="deliver">Entregas en persona en Caracas y Maracaibo. Al resto de Venezuela, envío gratis.</p>
+        <article class="city">
+          <h3>Caracas</h3>
+          <p>Entrega en persona, con tiempo para que revises tu reloj antes de pagar el saldo.</p>
+          <div class="actions"><a class="btn btn-accent" href="https://wa.me/584124261303?text=Hola%2C%20estoy%20en%20Caracas%20y%20quiero%20encargar%20un%20reloj." target="_blank" rel="noopener">Escribir a Caracas</a></div>
+          <p class="phone">+58 412 426 1303</p>
+        </article>
+        <article class="city">
+          <h3>Maracaibo</h3>
+          <p>Las mismas condiciones, con entrega en persona en la ciudad.</p>
+          <div class="actions"><a class="btn btn-accent" href="https://wa.me/584127884777?text=Hola%2C%20estoy%20en%20Maracaibo%20y%20quiero%20encargar%20un%20reloj." target="_blank" rel="noopener">Escribir a Maracaibo</a></div>
+          <p class="phone">+58 412 788 4777</p>
+        </article>
+      </div>
+      <div class="citypick">
+        <span>Los botones de la página te llevan al WhatsApp de</span>
+        <button type="button" class="citybtn" data-city="caracas" aria-pressed="true">Caracas</button>
+        <button type="button" class="citybtn" data-city="maracaibo" aria-pressed="false">Maracaibo</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-faq">
+    <div class="faq-head"><h2 id="t-faq">Lo que todos preguntan</h2></div>
+    <div class="bands">
+      <div class="band"><h3>¿Son originales?</h3><p>Sí. Compramos cada pieza nueva a proveedores verificados y conservamos el comprobante. Llega con su número de serie y, cuando aplica, con su caja y papeles originales.</p></div>
+      <div class="band"><h3>¿Cuánto tarda un encargo?</h3><p>Normalmente de 2 a 4 semanas desde que pagas el anticipo. Te confirmamos precio y tiempo antes de pagar, y si se retrasa más de un mes puedes cancelar y te devolvemos el anticipo.</p></div>
+      <div class="band"><h3>¿Cómo pago?</h3><p>En dólares por Zelle, Binance o efectivo, o en bolívares a la tasa euro del BCV del día en que pagas. Sin comisiones: si un medio de pago la cobra, la asumimos nosotros.</p></div>
+      <div class="band"><h3>¿Y si no lo consiguen?</h3><p>Te devolvemos el anticipo completo en 7 días hábiles. Si cancelas antes de que hagamos la compra al proveedor, también te lo devolvemos completo.</p></div>
+      <div class="band"><h3>¿Envían a mi ciudad?</h3><p>Sí, gratis a toda Venezuela por Zoom, Tealca, MRW u otra empresa que prefieras. Lo despachamos el mismo día en que recibimos el pago y te enviamos la guía.</p></div>
+      <div class="band"><h3>¿Qué garantía tiene?</h3><p>Un mes desde la entrega por defectos de fabricación del movimiento. No cubre golpes, humedad por mal uso, desgaste de la correa ni la pila, y no aceptamos devoluciones de relojes en buen estado: por eso te ayudamos a elegir antes.</p></div>
+    </div>
+    <div class="faq-more"><a class="btn btn-accent" data-wa="duda" href="#" target="_blank" rel="noopener">¿Otra duda? Escríbenos</a><a class="btn btn-ghost" href="#ayuda">Todas las preguntas</a><a class="btn btn-ghost" href="#guias">Cómo elegir tu reloj</a><a class="btn btn-ghost" href="#cuidado">Cuidado del reloj</a></div>
+  </section>
+</main>
+
+<footer class="paper">
+  <div class="wrap" aria-hidden="true" style="padding-bottom:48px"><div class="ticks"></div></div>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-inv">
+        <h2>¿Buscas otro reloj?</h2>
+        <a class="btn" href="#encargo">Pídelo por encargo</a>
+      </div>
+      <ul class="ft-links">
+        <li><a href="https://wa.me/584124261303" target="_blank" rel="noopener">WhatsApp Caracas</a></li>
+        <li><a href="https://wa.me/584127884777" target="_blank" rel="noopener">WhatsApp Maracaibo</a></li>
+        <li><a href="mailto:perazainvesting@gmail.com">perazainvesting@gmail.com</a></li>
+        <li><a href="#comparar">Comparar relojes</a></li>
+      </ul>
+    </div>
+    <div class="ft-legal">
+      <span id="copy">© 2026 Lumio Relojes</span>
+      <nav aria-label="Legal y guías"><a href="#guias">Guía para elegir</a><a href="#tallas">Guía de tallas</a><a href="#cuidado">Cuidado del reloj</a><a href="#terminos">Términos de encargo y apartado</a><a href="#privacidad">Privacidad</a><a href="#nosotros">Nosotros</a></nav>
+    </div>
+    <p class="credits">Videos de los pasos: Mixkit (licencia gratuita de Mixkit).</p>
+    <svg class="caseback" id="caseback" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="cb-ring" d="M200,200 m-150,0 a150,150 0 1,1 300,0 a150,150 0 1,1 -300,0"/></defs><circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="200" cy="200" r="120" fill="none" stroke="currentColor" stroke-width=".6"/><text font-size="17" letter-spacing="6" fill="currentColor"><textPath href="#cb-ring">LUMIO RELOJES · ORIGINALES Y NUEVOS · CARACAS · MARACAIBO · VENEZUELA ·</textPath></text><text x="200" y="196" text-anchor="middle" font-size="30" fill="currentColor" font-family="Bodoni Moda, serif" font-style="italic">Lumio</text><text x="200" y="226" text-anchor="middle" font-size="11" letter-spacing="4" fill="currentColor">EST. 2026</text></svg>
+    <div class="bigname" aria-hidden="true">lumio</div>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-3.9A8 8 0 1 1 8.2 19z"/><path d="M9 9.5c.3 2 2.2 4 4.5 4.5l1-1 1.8.8-.4 1.5c-3.5.3-7.4-3.6-7-7l1.5-.4.8 1.8z"/></svg><span>Escríbenos · Caracas</span></a>
+
+<div class="cart-scrim" id="cart-scrim" hidden></div>
+<aside class="cart" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-t" hidden>
+  <div class="cart-head"><h2 id="cart-t">Tu carrito</h2><button class="close" type="button" id="cart-close" aria-label="Cerrar carrito">×</button></div>
+  <ul class="cart-list" id="cart-list"></ul>
+  <div class="cart-foot" id="cart-foot">
+    <dl class="cart-sum" id="cart-sum"></dl>
+    <a class="btn btn-accent cart-go" id="cart-go" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    <p class="small">Te confirmamos disponibilidad, precio final y entrega por WhatsApp antes de que pagues. Los relojes por encargo se reservan con el 40%.</p>
+  </div>
+</aside>
+
+<div class="cmp-tray" id="cmp-tray" hidden>
+  <span id="cmp-label"></span>
+  <a class="btn btn-accent" href="#comparar">Comparar</a>
+  <button class="x" type="button" id="cmp-clear">Quitar</button>
+</div>
+
+<!-- ===== Ficha del reloj ===== -->
+<div class="modal" data-modal="ficha" role="dialog" aria-modal="true" aria-labelledby="d-title" hidden>
+  <div class="modal-box">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <nav class="crumb" aria-label="Ruta"><a href="#relojes">Vitrina</a><span aria-hidden="true">/</span><span id="d-crumb-brand"></span><span aria-hidden="true">/</span><span id="d-crumb-model" aria-current="page"></span></nav>
+    <div class="dlg">
+      <div class="gal"><div id="d-main"></div><div class="thumbs" id="d-thumbs"></div></div>
+      <div class="body">
+        <p class="eyebrow" id="d-brand"></p>
+        <h3 id="d-title"></h3>
+        <p class="tagl" id="d-tag"></p>
+        <div><p class="price" id="d-price" style="font-size:26px"></p><p class="bsp" id="d-bs"></p></div>
+        <div class="quickbar" aria-label="Ir a">
+          <button type="button" data-go="sec-feat">Características</button>
+          <button type="button" data-go="sec-specs">Medidas</button>
+          <a href="#tallas">¿Me queda bien?</a>
+          <button type="button" data-go="sec-q">Preguntas</button>
+        </div>
+        <p class="apart" id="d-apart" hidden></p>
+        <div class="actions">
+          <button class="btn btn-accent" type="button" id="d-cart">Agregar al carrito</button>
+          <a class="btn btn-ghost" id="d-wa" href="#" target="_blank" rel="noopener">Lo quiero</a>
+          <a class="btn btn-ghost" id="d-notify" href="#" target="_blank" rel="noopener" hidden>Avísame cuando llegue</a>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost btn-sm" type="button" id="d-fav">Guardar en favoritos</button>
+          <button class="btn btn-ghost btn-sm" type="button" id="d-cmp">Añadir al comparador</button>
+        </div>
+      </div>
+    </div>
+    <section class="story" id="sec-story" aria-labelledby="d-story-h">
+      <p class="eyebrow" id="d-story-eye"></p>
+      <h4 id="d-story-h"></h4>
+      <p id="d-story-p"></p>
+    </section>
+    <section class="feats" id="sec-feat" aria-label="Características">
+      <div class="feat-grid" id="d-feats"></div>
+    </section>
+    <section class="qa" id="sec-q" aria-labelledby="d-q">
+      <h4 id="d-q"></h4>
+      <p id="d-a"></p>
+      <p class="small"><a href="#ayuda">Más preguntas frecuentes</a></p>
+    </section>
+    <section class="specsec" id="sec-specs" aria-labelledby="d-specs-h">
+      <div class="spec-cols">
+        <div><p class="eyebrow">Ficha técnica</p><h4 id="d-specs-h" style="font-size:22px;margin:8px 0 14px">Medidas y detalles</h4><dl class="specs" id="d-specs"></dl></div>
+        <div class="box" id="d-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span id="d-box-text"></span></div>
+      </div>
+    </section>
+    <div class="buybar"><div class="bbinfo"><span id="bb-name"></span><b id="bb-price"></b></div><a class="btn btn-accent" id="bb-wa" href="#" target="_blank" rel="noopener">Lo quiero</a></div>
+    <div class="similar"><p class="eyebrow">También te puede gustar</p><div class="row" id="d-similar"></div></div>
+    <button type="button" class="nextw" id="d-next"><span class="eyebrow">Siguiente reloj</span><span class="nx" id="d-next-name"></span><span class="arrow" aria-hidden="true">→</span></button>
+  </div>
+</div>
+
+<!-- ===== Pide un reloj ===== -->
+<div class="modal" data-modal="encargo" role="dialog" aria-modal="true" aria-labelledby="t-encargo" hidden>
+  <div class="modal-box">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-encargo">¿No está en la vitrina? Te lo traemos</h2>
+        <p class="sub">Cuéntanos qué reloj buscas. Te confirmamos el precio y el tiempo de entrega, y si te conviene lo pedimos con el 40% de anticipo.</p></div>
+      <ol class="steps">
+        <li><strong>Haz tu solicitud</strong><span>Marca, modelo y referencia.</span></li>
+        <li><strong>Recibe la cotización</strong><span>Te confirmamos precio y tiempo.</span></li>
+        <li><strong>Adelanta el 40%</strong><span>Con eso hacemos el pedido.</span></li>
+        <li><strong>Recíbelo y paga el resto</strong><span>El 60% al entregártelo en Caracas o Maracaibo. Con envío nacional, al llegar el reloj a nosotros; lo enviamos ese mismo día y te mandamos la guía.</span></li>
+      </ol>
+      <div class="order">
+        <form class="req" id="req" novalidate>
+          <h3>Solicita tu reloj</h3>
+          <div class="two">
+            <label class="field" for="f-brand">Marca
+              <input id="f-brand" type="text" autocomplete="off" placeholder="Ej.: Seiko">
+            </label>
+            <label class="field" for="f-model">Modelo
+              <input id="f-model" type="text" autocomplete="off" placeholder="Ej.: Presage Cocktail Time">
+            </label>
+          </div>
+          <label class="field" for="f-ref">Referencia (opcional)
+            <input id="f-ref" type="text" autocomplete="off" placeholder="Ej.: SRPB43J1">
+          </label>
+          <div class="two">
+            <label class="field" for="f-name">Tu nombre
+              <input id="f-name" type="text" autocomplete="name">
+            </label>
+            <label class="field" for="f-city">Ciudad
+              <input id="f-city" type="text" autocomplete="address-level2">
+            </label>
+          </div>
+          <button class="btn btn-accent" type="submit">Enviar solicitud por WhatsApp</button>
+          <p class="err" id="f-err" hidden>Escribe la marca y el modelo que buscas.</p>
+          <p class="small">Al enviar aceptas los <a href="#terminos">términos de encargo</a> y la <a href="#privacidad">política de privacidad</a>.</p>
+        </form>
+        <div class="quote" aria-live="polite">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <p class="eyebrow">Así pagas</p>
+            <h3 id="q-title">Tu encargo</h3>
+          </div>
+          <div class="qgrid">
+            <div><span>Al confirmar el pedido</span><strong>40%</strong></div>
+            <div><span>Cuando llega el reloj</span><strong>60%</strong></div>
+            <div><span>Tiempo estimado</span><strong id="q-time"></strong></div>
+          </div>
+          <p class="small">Te confirmamos el precio final, con el envío incluido, antes de que pagues el anticipo. En Caracas y Maracaibo pagas el 60% al recibirlo en persona. Si el envío es nacional, pagas el 60% cuando el reloj llega a nosotros; lo despachamos por la agencia el mismo día en que recibimos el pago y te enviamos la guía.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Guías ===== -->
+<div class="modal" data-modal="guias" role="dialog" aria-modal="true" aria-labelledby="t-guias" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-guias">Cómo elegir tu reloj</h2></div>
+      <div class="tabs"><a class="chip" href="#guias" aria-pressed="true">Elegir</a><a class="chip" href="#tallas">Tallas</a><a class="chip" href="#cuidado">Cuidado</a></div>
+      <div class="prose">
+        <h3>Automático o de cuarzo</h3>
+        <p><strong>Automático:</strong> funciona con un mecanismo que se carga con el movimiento de tu muñeca. No usa pila. El segundero se desliza de forma continua y tiene ese encanto de la relojería tradicional. Si lo dejas de usar unos días, se detiene y solo hay que ajustarlo.</p>
+        <p><strong>Cuarzo:</strong> funciona con pila. Es más preciso, más liviano de mantener y siempre está en hora. El segundero avanza a saltos. En nuestra vitrina: Tissot PRX, Tissot Gentleman y Casio Duro.</p>
+        <h3>Según cómo lo vas a usar</h3>
+        <ul>
+          <li><strong>Para la oficina y eventos:</strong> esfera limpia, caja delgada y correa de cuero o brazalete fino.</li>
+          <li><strong>Para todos los días:</strong> acero, buena resistencia al agua y un diseño que combine con todo.</li>
+          <li><strong>Para el agua y el deporte:</strong> 200 m de resistencia, bisel giratorio e índices luminosos.</li>
+          <li><strong>Para regalar con poco presupuesto:</strong> un buceo de cuarzo o un clásico de vestir: pregúntanos y te mostramos opciones.</li>
+        </ul>
+        <h3>Qué significa la resistencia al agua</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>Indicación</th><th>Qué puedes hacer</th></tr></thead>
+          <tbody>
+            <tr><td>30 m (3 bar)</td><td>Salpicaduras y lluvia. No para lavarte las manos con el reloj sumergido ni para nadar.</td></tr>
+            <tr><td>50 m (5 bar)</td><td>Uso diario y lavarte las manos. No para nadar.</td></tr>
+            <tr><td>100 m (10 bar)</td><td>Nadar en piscina o en la playa. No para bucear.</td></tr>
+            <tr><td>200 m (20 bar)</td><td>Nado, snorkel y buceo recreativo.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Guía de tallas ===== -->
+<div class="modal" data-modal="tallas" role="dialog" aria-modal="true" aria-labelledby="t-tallas" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-tallas">Guía de tallas</h2>
+        <p class="sub">Mide tu muñeca con una cinta métrica o con un hilo que luego mides con una regla, justo debajo del hueso de la muñeca.</p></div>
+      <div class="tabs"><a class="chip" href="#guias">Elegir</a><a class="chip" href="#tallas" aria-pressed="true">Tallas</a><a class="chip" href="#cuidado">Cuidado</a></div>
+      <div class="sizer">
+        <label class="field" for="wrist">Contorno de tu muñeca (cm)
+          <input id="wrist" type="number" min="12" max="26" step="0.5" value="17" inputmode="decimal">
+        </label>
+        <div class="sizeres" aria-live="polite"><span class="small">Te recomendamos una caja de</span><strong id="wrist-out"></strong></div>
+      </div>
+      <p class="small" style="text-align:center;margin-bottom:12px" id="wrist-match"></p>
+      <div class="grid" id="wrist-grid" style="margin-top:0"></div>
+      <div class="tbl" style="margin-top:28px"><table>
+        <thead><tr><th>Muñeca</th><th>Diámetro recomendado</th></tr></thead>
+        <tbody>
+          <tr><td class="num">Menos de 15 cm</td><td class="num">34 a 38 mm</td></tr>
+          <tr><td class="num">15 a 17 cm</td><td class="num">36 a 40 mm</td></tr>
+          <tr><td class="num">17 a 19 cm</td><td class="num">39 a 42 mm</td></tr>
+          <tr><td class="num">19 a 21 cm</td><td class="num">41 a 45 mm</td></tr>
+          <tr><td class="num">Más de 21 cm</td><td class="num">43 mm o más</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small" style="margin-top:14px">Es una guía. Los relojes con brazalete integrado se sienten un poco más grandes que su medida; los de caja delgada, un poco más pequeños.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Cuidado ===== -->
+<div class="modal" data-modal="cuidado" role="dialog" aria-modal="true" aria-labelledby="t-cuidado" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-cuidado">Cuidado del reloj</h2></div>
+      <div class="tabs"><a class="chip" href="#guias">Elegir</a><a class="chip" href="#tallas">Tallas</a><a class="chip" href="#cuidado" aria-pressed="true">Cuidado</a></div>
+      <div class="prose">
+        <h3>Limpieza</h3>
+        <ul>
+          <li>Pasa un paño suave y seco por la caja y el cristal después de usarlo.</li>
+          <li>Los brazaletes de acero se pueden lavar con agua tibia, jabón neutro y un cepillo de dientes suave, solo si el reloj resiste 50 m o más.</li>
+          <li>Las correas de cuero no se mojan. Déjalas airear y evita el perfume directo.</li>
+        </ul>
+        <h3>Agua y humedad</h3>
+        <ul>
+          <li>Revisa que la corona esté presionada o enroscada antes de que el reloj toque el agua.</li>
+          <li>No uses los botones ni la corona bajo el agua.</li>
+          <li>Evita el sauna y el agua muy caliente: el calor afecta los empaques.</li>
+          <li>Después del mar, enjuágalo con agua dulce.</li>
+        </ul>
+        <h3>Uso diario</h3>
+        <ul>
+          <li>Aleja el reloj de imanes fuertes, como parlantes y cierres magnéticos de bolsos.</li>
+          <li>Un automático que no usas se detiene. Dale unas 20 vueltas a la corona antes de ponértelo.</li>
+          <li>No cambies la fecha entre las 9 p. m. y las 3 a. m. en relojes automáticos: el mecanismo de la fecha está trabajando.</li>
+        </ul>
+        <h3>Mantenimiento</h3>
+        <ul>
+          <li><strong>Cuarzo:</strong> cambia la pila cuando el segundero empiece a saltar de dos en dos o se detenga. Hazlo con un relojero que revise el empaque.</li>
+          <li><strong>Automático:</strong> un servicio completo cada 4 a 6 años lo mantiene preciso por décadas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Ayuda ===== -->
+<div class="modal" data-modal="ayuda" role="dialog" aria-modal="true" aria-labelledby="t-ayuda" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-ayuda">Preguntas frecuentes</h2></div>
+      <div class="prose" style="gap:0">
+        <details open><summary>¿Los relojes son originales?</summary><p>Sí. Compramos cada pieza nueva a proveedores verificados en el exterior y conservamos el comprobante de compra. Cada reloj llega con su número de serie y, cuando aplica, con su caja y papeles originales.</p></details>
+        <details><summary>¿Cómo verifican que son originales?</summary><p>Revisamos la referencia y el número de serie, los grabados del reverso, la calidad de la esfera y los acabados, y que caja, manual y tarjeta coincidan con el modelo. Si un reloj no pasa la revisión, no lo vendemos.</p></details>
+        <details><summary>¿Qué incluye el precio?</summary><p>El reloj y su empaque. El precio está en dólares y se paga por Zelle, Binance, efectivo o en bolívares a la tasa euro del BCV del día, sin comisiones adicionales. El envío nacional es gratis.</p></details>
+        <details><summary>¿Puedo pagar en bolívares?</summary><p>Sí. Calculamos el monto a la tasa euro del BCV del día en que pagas. Escríbenos por WhatsApp y te lo damos.</p></details>
+        <details><summary>¿Cómo funciona el apartado de los relojes en camino?</summary><p>Pagas el 40% del precio y el reloj queda reservado a tu nombre. Te avisamos cuando llegue y pagas el 60% restante al recibirlo. Si el envío es nacional, pagas el 60% cuando el reloj llega a nosotros; lo despachamos por la agencia el mismo día en que recibimos el pago y te enviamos la guía. Las condiciones completas están en los <a href="#terminos">términos de encargo y apartado</a>.</p></details>
+        <details><summary>¿Cuánto tarda un encargo?</summary><p>Normalmente de 2 a 4 semanas desde que pagas el anticipo. Te confirmamos el tiempo exacto antes de pagar y te mantenemos al tanto por WhatsApp.</p></details>
+        <details><summary>¿Qué pasa si me arrepiento después de pagar el anticipo?</summary><p>Si todavía no hemos comprado el reloj al proveedor, te devolvemos el anticipo completo. Si ya lo compramos, el anticipo no se devuelve. Los detalles están en los <a href="#terminos">términos de encargo</a>.</p></details>
+        <details><summary>¿Hacen envíos a mi ciudad?</summary><p>Sí, el envío es gratis a todo el país. Hacemos entregas personales en Caracas y Maracaibo, y al resto de Venezuela enviamos por Zoom, Tealca, MRW u otra empresa autorizada que prefieras, sin costo para ti. En los envíos nacionales el saldo se paga cuando el reloj llega a nosotros; lo despachamos el mismo día en que recibimos el pago y te hacemos llegar la guía para que sigas tu paquete.</p></details>
+        <details><summary>¿Qué cubre la garantía?</summary><p>Un mes de garantía por defectos de fabricación del movimiento, contado desde la entrega. No cubre golpes, caídas, humedad por mal uso, desgaste de la correa o el brazalete, la pila ni ningún otro daño causado por el uso.</p></details>
+        <details><summary>¿Aceptan cambios o devoluciones?</summary><p>No aceptamos cambios ni devoluciones de relojes en buen estado. Por eso te ayudamos a elegir antes de comprar: revisa la <a href="#tallas">guía de tallas</a> y pregúntanos lo que necesites por WhatsApp.</p></details>
+      </div>
+    </div>
+    <div class="mpad alt">
+      <div class="head" style="margin-bottom:24px"><h2 style="font-size:28px">Comprar es sencillo</h2></div>
+      <ol class="steps" style="margin-bottom:0">
+        <li><strong>Elige tu reloj</strong><span>En la vitrina o por encargo.</span></li>
+        <li><strong>Escríbenos</strong><span>Confirmamos disponibilidad y entrega por WhatsApp.</span></li>
+        <li><strong>Paga</strong><span>Zelle, Binance, efectivo o bolívares a la tasa euro BCV del día.</span></li>
+        <li><strong>Recíbelo</strong><span>En persona en Caracas o Maracaibo, o con envío gratis a todo el país.</span></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Nosotros ===== -->
+<div class="modal" data-modal="nosotros" role="dialog" aria-modal="true" aria-labelledby="t-nos" hidden>
+  <div class="modal-box">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-nos">Relojes originales, sin complicaciones</h2></div>
+      <div class="prose">
+        <p>Somos dos hermanos apasionados por los relojes. Durante años nos tocó buscar, comparar y esperar para conseguir un reloj original en Venezuela, y sabemos lo difícil que puede ser encontrar uno confiable a buen precio.</p>
+        <p>Así nació <span class="brand-name-t">Lumio</span> en 2026: uno de nosotros atiende en Caracas y el otro en Maracaibo, y entre los dos elegimos cada pieza como si fuera para nosotros. Trabajamos con marcas con historia, de Suiza, Japón y Estados Unidos, que ofrecen calidad real a un precio que tiene sentido.</p>
+        <p>Nos gusta conversar de relojes tanto como venderlos. Escríbenos aunque solo quieras un consejo.</p>
+      </div>
+    </div>
+    <div class="mpad alt">
+      <div class="head" style="margin-bottom:28px"><h2 style="font-size:30px">Compra con confianza</h2></div>
+      <div class="why">
+        <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><h3>Originales y nuevos</h3><p>Cada pieza es nueva y verificada antes de venderla.</p></div>
+        <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><h3>Precio claro desde el inicio</h3><p>Ves el precio antes de escribirnos.</p></div>
+        <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18M7 15h3"/></svg><h3>Formas de pago</h3><p>Zelle, Binance, efectivo o bolívares a la tasa euro BCV del día.</p></div>
+        <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.5-4A8 8 0 1 1 9 19.5z"/></svg><h3>Atención directa</h3><p>Te asesoramos antes y después de la compra.</p></div>
+      </div>
+    </div>
+    <!-- Opiniones: agregar cuando los clientes den su permiso -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== Favoritos ===== -->
+<div class="modal" data-modal="favoritos" role="dialog" aria-modal="true" aria-labelledby="t-fav" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-fav">Favoritos</h2>
+        <p class="sub">Guarda los relojes que te gustan y envíanos tu lista por WhatsApp. La lista se guarda en este dispositivo.</p></div>
+      <div class="grid" id="fav-grid" style="margin-top:0"></div>
+      <div class="actions" style="justify-content:center;margin-top:24px" id="fav-actions"><a class="btn btn-accent" id="fav-send" href="#" target="_blank" rel="noopener">Enviar mi lista por WhatsApp</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Comparador ===== -->
+<div class="modal" data-modal="comparar" role="dialog" aria-modal="true" aria-labelledby="t-cmp" hidden>
+  <div class="modal-box">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-cmp">Compara relojes</h2>
+        <p class="sub">Elige hasta 3 relojes para verlos lado a lado.</p></div>
+      <div class="chips" id="cmp-pick" style="margin-bottom:22px"></div>
+      <div class="tbl" id="cmp-table"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Términos ===== -->
+<div class="modal" data-modal="terminos" role="dialog" aria-modal="true" aria-labelledby="t-terms" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-terms">Términos de encargo y apartado</h2></div>
+      <div class="prose">
+                <h3>1. Cotización</h3>
+        <p>El precio que muestra el cotizador de la página es una estimación. Antes de cobrar cualquier monto, <span class="brand-name-t">Lumio</span> confirma por escrito, por WhatsApp, el precio final, el tiempo estimado de entrega y la referencia exacta del reloj. Esa cotización tiene una vigencia de 24 horas, porque los precios de los proveedores cambian.</p>
+        <h3>2. Anticipo del encargo</h3>
+        <p>Para hacer el pedido, el cliente paga un anticipo del 40% del precio confirmado. Con ese pago, <span class="brand-name-t">Lumio</span> compra el reloj al proveedor.</p>
+        <ul>
+          <li>Si el cliente cancela antes de que se haga la compra al proveedor, se le devuelve el anticipo completo.</li>
+          <li>Si el cliente cancela después de hecha la compra, el anticipo no se reembolsa.</li>
+          <li>Si <span class="brand-name-t">Lumio</span> no logra conseguir el reloj, se devuelve el anticipo completo en un plazo de 7 días hábiles.</li>
+        </ul>
+        <h3>3. Plazo de entrega</h3>
+        <p>El plazo informado es estimado y depende del proveedor y del transporte internacional. Si el reloj se retrasa más de 1 mes respecto a la fecha confirmada, el cliente puede cancelar el encargo y recibir de vuelta su anticipo completo.</p>
+        <h3>4. Pago del saldo y retiro</h3>
+        <p>El 60% restante se paga al momento de la entrega en Caracas o Maracaibo. Cuando el cliente pide envío nacional, el saldo se paga en cuanto el reloj llega a manos de <span class="brand-name-t">Lumio</span>; se despacha por la agencia elegida el mismo día en que se recibe el pago y se le envía la guía de rastreo. Una vez avisado de que su reloj llegó, el cliente tiene 10 días para pagar el saldo y recibirlo. Si no lo hace en ese plazo, se entiende que desiste del encargo: el anticipo no se reembolsa y <span class="brand-name-t">Lumio</span> puede poner el reloj a la venta.</p>
+        <h3>5. Apartado de relojes en camino</h3>
+        <p>Los relojes marcados como «Llega pronto» se pueden reservar pagando el 40% de su precio publicado. El precio queda congelado. Al llegar, el cliente tiene 7 días para pagar el saldo; si no lo hace, el apartado se cancela y el anticipo no se reembolsa. Si el reloj no llega o llega con defectos, se devuelve el anticipo completo.</p>
+        <h3>6. Revisión al recibir</h3>
+        <p>El cliente debe revisar el reloj al recibirlo. Cualquier defecto de fábrica o diferencia con la referencia confirmada debe informarse en un plazo de 48 horas.</p>
+        <h3>7. Garantía y devoluciones</h3>
+        <p><span class="brand-name-t">Lumio</span> ofrece una garantía de 1 mes, contado desde la entrega, por defectos de fabricación del movimiento. La garantía no cubre golpes, caídas, humedad por mal uso, desgaste de correas o brazaletes, la pila ni ningún otro daño causado por el uso. No se aceptan cambios ni devoluciones de relojes en buen estado.</p>
+        <h3>8. Pagos</h3>
+        <p>Los precios están en dólares de los Estados Unidos. Se aceptan Zelle, Binance, efectivo en dólares y bolívares. Los pagos en bolívares se calculan a la tasa euro del Banco Central de Venezuela (BCV) del día del pago. Si un medio de pago tuviera comisión, la asume <span class="brand-name-t">Lumio</span>.</p>
+        <h3>9. Envíos</h3>
+        <p>La entrega personal está disponible en Caracas y Maracaibo. Los envíos al resto del país se hacen por Zoom, Tealca, MRW u otra empresa autorizada, el mismo día en que se recibe el pago del saldo. El envío nacional es gratis para el cliente y se le hace llegar la guía de rastreo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Privacidad ===== -->
+<div class="modal" data-modal="privacidad" role="dialog" aria-modal="true" aria-labelledby="t-priv" hidden>
+  <div class="modal-box narrow">
+    <button class="close modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="mpad">
+      <div class="head"><h2 id="t-priv">Política de privacidad</h2></div>
+      <div class="prose">
+                <h3>Qué datos usamos</h3>
+        <p>Cuando nos escribes desde la página, los datos que escribes en el formulario (nombre, ciudad, el reloj que buscas) se envían en un mensaje de WhatsApp desde tu propio teléfono. La página no guarda esos datos en ningún servidor.</p>
+        <h3>Para qué los usamos</h3>
+        <p>Solo para responder tu consulta, cotizar, gestionar tu pedido y coordinar la entrega. No los vendemos ni los compartimos con terceros, salvo con el servicio de envío cuando hace falta para entregarte el reloj.</p>
+        <h3>Lo que se guarda en tu dispositivo</h3>
+        <p>Tus favoritos, el comparador y los filtros de la vitrina se guardan en tu navegador para que los encuentres al volver. Puedes borrarlos limpiando los datos del sitio.</p>
+        <h3>Tus derechos</h3>
+        <p>Puedes pedirnos en cualquier momento que borremos tu conversación y tus datos escribiéndonos a perazainvesting@gmail.com o por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Ajustes del negocio ===== */
+const MARCA = 'Lumio';
+const WHATSAPP = {caracas:'584124261303', maracaibo:'584127884777'};   // números con código de país, solo dígitos
+const ANTICIPO = 0.40;
+const RECARGO_ENCARGO = 0.40;
+const ENVIO_ESTIMADO = 20;
+const TIEMPO_ENCARGO = '2 a 4 semanas';
+const TASA_BS = 0;              // bolívares por dólar. Con 0 no se muestran precios en Bs
+const TASA_FECHA = '';          // ej.: '27/10/2026'
+
+const PHOTOS = {
+  'INV-004':'img/inv-004.webp',
+  'INV-005':'img/inv-005.webp',
+  'INV-007':'img/inv-007.webp',
+  'INV-006':'img/inv-006.webp',
+  'INV-008':'img/inv-008.webp',
+  'INV-010':'img/inv-010.webp',
+  'INV-015':'img/inv-015.webp',
+  'INV-014':'img/inv-014.webp',
+  'INV-012':'img/inv-012.webp'
+};
+/* Fotos extra por reloj (perfil, reverso, en la muñeca): agrégalas aquí cuando las tengas */
+const GALLERY = {};
+
+/* ===== Inventario (de «Relojes - Inventario»; solo datos públicos) ===== */
+const W = [
+  {id:'INV-004', brand:'Tissot', model:'PRX 40 205', variant:'Esfera verde', ref:'T137.410.11.091.00', box:true, price:450, qty:1, transit:false, featured:1, mm:40, kind:'Cuarzo',
+   specs:{'Movimiento':'Cuarzo suizo','Diámetro':'40 mm','Grosor':'10,4 mm','Cristal':'Zafiro','Resistencia al agua':'100 m (10 bar)','Caja':'Acero inoxidable 316L','Brazalete':'Acero integrado, cambio rápido','Broche':'Mariposa con pulsadores'}},
+  {id:'INV-005', brand:'Tissot', model:'Gentleman Quartz', variant:'Esfera negra', ref:'', box:false, price:400, qty:1, transit:false, featured:2, mm:40, kind:'Cuarzo',
+   specs:{'Movimiento':'Cuarzo suizo','Diámetro':'40 mm','Cristal':'Zafiro','Resistencia al agua':'100 m (10 bar)','Brazalete':'Acero cepillado y pulido','Broche':'Desplegable con pulsadores','Caja y papeles':'No incluye'}},
+  {id:'INV-007', brand:'Seiko', model:'5 Sports Automatic', variant:'Esfera negra con números árabes orientales', ref:'', box:true, price:330, qty:1, transit:false, featured:3, mm:40, kind:'Automático',
+   specs:{'Movimiento':'Automático Seiko 4R36, 24 rubíes, con carga manual','Reserva de marcha':'41 horas aprox.','Funciones':'Día y fecha','Diámetro':'40 mm','Grosor':'11,5 mm aprox.','Cristal':'Hardlex','Resistencia al agua':'100 m (10 bar)','Brazalete':'Acero inoxidable'}},
+  {id:'INV-006', brand:'Orient', model:'Bambino Version 2', variant:'Esfera crema · correa de cuero', ref:'', box:true, price:350, qty:1, transit:false, featured:4, mm:40.5, kind:'Automático',
+   specs:{'Movimiento':'Automático Orient','Diámetro':'40,5 mm','Grosor':'11,8 mm aprox.','Cristal':'Mineral abombado','Resistencia al agua':'30 m (3 bar)','Correa':'Cuero marrón con hebilla','Funciones':'Fecha'}},
+  {id:'INV-012', brand:'Casio', model:'Duro 200 «Marlin»', variant:'Bisel azul y rojo', ref:'MDV106DD-1A2V', box:true, price:130, qty:2, transit:true, featured:6, mm:44, kind:'Cuarzo', duro:true},
+  {id:'INV-008', brand:'Casio', model:'Duro 200 «Marlin»', variant:'Bisel verde', ref:'MDV106DD-1A3V', box:true, price:130, qty:2, transit:true, featured:7, mm:44, kind:'Cuarzo', duro:true},
+  {id:'INV-010', brand:'Casio', model:'Duro 200 «Marlin»', variant:'Bisel negro', ref:'MDV106DD-1A1V', box:true, price:130, qty:2, transit:true, featured:8, mm:44, kind:'Cuarzo', duro:true},
+  {id:'INV-014', brand:'Casio', model:'Duro 200 «Marlin»', variant:'Bisel negro y azul · correa de resina', ref:'MDV106B-1A1V', box:true, price:120, qty:1, transit:true, featured:9, mm:44, kind:'Cuarzo', duro:true, resin:true},
+  {id:'INV-015', brand:'Casio', model:'Duro 200 «Marlin»', variant:'Bisel dorado · correa de resina', ref:'MDV106G-1AV', box:true, price:120, qty:1, transit:true, featured:10, mm:44, kind:'Cuarzo', duro:true, resin:true}
+];
+W.forEach(w => { w.gender = w.gender || 'Hombre'; w.specs = w.specs || {}; });
+const INV = W.filter(w => !w.encargo);
+/* Catálogo por encargo: se carga aparte (catalogo-hombre.js y catalogo-mujer.js) para que la página abra rápido */
+const ENC_FILES = ['img/cat/indice.js', 'catalogo-hombre.js', 'catalogo-mujer.js'];
+let ENC_READY = false;
+W.filter(w=>w.duro).forEach(w => w.specs = {'Movimiento':'Cuarzo','Diámetro':'44 mm','Grosor':'13 mm aprox.','Cristal':'Mineral','Resistencia al agua':'200 m (20 bar), apto para buceo','Bisel':'Giratorio unidireccional','Luminiscencia':'Agujas e índices', [w.resin?'Correa':'Brazalete']: w.resin ? 'Resina' : 'Acero inoxidable'});
+
+
+const STORY = {
+  'Tissot|PRX 40 205': {eye:'Inspirado en 1978', tag:'El clásico de 1978, de vuelta a la muñeca.',
+    h:'Un diseño de los años setenta que se volvió moderno otra vez',
+    p:'En 1978 Tissot lanzó un reloj de acero de líneas rectas con el brazalete integrado a la caja. El PRX actual recupera esa silueta con cuarzo suizo y cristal de zafiro. Es elegante con traje y relajado con camiseta.',
+    f:[['01','Brazalete integrado','La caja y el brazalete forman una sola línea. Se cambia sin herramientas gracias a su sistema de cambio rápido.'],
+       ['02','Cristal de zafiro','El material más resistente a los rayones después del diamante. La esfera se ve igual de limpia con los años.'],
+       ['100 m','Listo para el agua','Puedes nadar con él en la piscina o la playa.'],
+       ['10,4 mm','Delgado','Pasa bajo el puño de la camisa sin trabarse.']],
+    q:'¿Qué significa PRX?', a:'Precise, Robust y una X por el número 10 en romano: las 10 atmósferas de resistencia al agua del modelo original.'},
+  'Tissot|Gentleman Quartz': {eye:'Cuarzo suizo', tag:'Un Tissot suizo para usar todos los días.',
+    h:'Elegancia suiza sin complicaciones',
+    p:'El Gentleman es el reloj de Tissot para quien quiere un modelo sobrio y versátil, que combine igual con traje que con jeans. Su movimiento de cuarzo suizo es preciso y no necesita cuerda: te lo pones y siempre está en hora.',
+    f:[['01','Cuarzo de precisión','Siempre en hora, sin darle cuerda. Solo necesita un cambio de pila cada pocos años.'],
+       ['02','Cristal de zafiro','Resiste los rayones del día a día.'],
+       ['100 m','Resistente al agua','Para la lluvia, lavarte las manos o nadar.'],
+       ['40 mm','Tamaño versátil','Ni grande ni pequeño: se ve bien en casi cualquier muñeca.']],
+    q:'¿Qué significa «Swiss Made»?', a:'Que el movimiento es suizo y que el reloj se ensambló y pasó su control final en Suiza. Es una garantía de origen protegida por la ley suiza.'},
+  'Seiko|5 Sports Automatic': {eye:'Desde 1963', tag:'La línea automática más famosa de Seiko.',
+    h:'Un automático japonés con más de seis décadas de historia',
+    p:'Seiko 5 nació en 1963 para llevar un reloj automático confiable a todo el mundo. Esta versión tiene la esfera negra con números árabes orientales, día y fecha, y un brazalete de acero para el uso diario.',
+    f:[['4R36','Movimiento automático','Se carga con tu muñeca y también a mano con la corona. El segundero se detiene para ponerlo en hora exacta.'],
+       ['01','Día y fecha','Las dos ventanas a las 3 en punto te dan el día de la semana y la fecha.'],
+       ['02','Numerales árabes','Una esfera poco común que lo distingue de cualquier otro Seiko 5.'],
+       ['100 m','Resistente al agua','Para nadar y para el uso diario sin preocupaciones.']],
+    q:'¿Por qué se llama Seiko 5?', a:'Por las cinco cualidades con las que nació: carga automática, día y fecha, resistencia al agua, corona empotrada y una caja resistente.'},
+  'Orient|Bambino Version 2': {eye:'Reloj de vestir', tag:'Elegancia de vestir a precio de reloj diario.',
+    h:'El reloj de vestir que recomiendan los coleccionistas',
+    p:'Orient fabrica sus propios movimientos automáticos en Japón. El Bambino es su modelo más clásico: esfera crema, números romanos, agujas azuladas y un cristal abombado que recuerda a los relojes de los años cincuenta.',
+    f:[['01','Cristal abombado','Refleja la luz a lo largo de la esfera y le da un aire de reloj antiguo.'],
+       ['02','Automático de Orient','Movimiento japonés de fabricación propia. Sin pila.'],
+       ['40,5 mm','Tamaño clásico','Proporciones de reloj de vestir que se ven bien con camisa y saco.'],
+       ['03','Correa de cuero','Cuero marrón con hebilla, el compañero natural de una esfera crema.']],
+    q:'¿Por qué el cristal abombado?', a:'Es un detalle de los relojes de vestir de mediados del siglo XX. La curva del cristal suaviza los reflejos y hace que la esfera se vea más profunda.'},
+  'Casio|Duro 200 «Marlin»': {eye:'Buceo 200 m', tag:'El reloj de buceo que los coleccionistas llaman Marlin.',
+    h:'Un reloj de buceo de verdad por menos de 150 dólares',
+    p:'El Casio Duro tiene lo que define a un reloj de buceo: 200 metros de resistencia, bisel giratorio en un solo sentido e índices luminosos. Por su precio y su resistencia es uno de los relojes favoritos para empezar una colección.',
+    f:[['200 m','Resistencia al agua','Apto para nadar, hacer snorkel y bucear de forma recreativa.'],
+       ['01','Bisel unidireccional','Gira en un solo sentido para medir el tiempo de inmersión sin riesgo de alargarlo por error.'],
+       ['02','Luminiscencia','Agujas e índices que brillan en la oscuridad.'],
+       ['44 mm','Presencia deportiva','Una caja grande y legible, pensada para el agua.']],
+    q:'¿Por qué le dicen «Marlin»?', a:'Por el pez marlín dibujado en la esfera, sobre la indicación de 200 m. Así lo bautizaron los coleccionistas.'}
+};
+const storyOf = w => STORY[w.brand + '|' + w.model] || null;
+
+const $ = id => document.getElementById(id);
+const usd = n => '$' + Math.ceil(n).toLocaleString('es-VE');
+const bs = n => TASA_BS > 0 ? '≈ Bs ' + Math.round(n * TASA_BS).toLocaleString('es-VE') : '';
+let CITY = 'caracas';
+const waLink = text => 'https://wa.me/' + (WHATSAPP[CITY] || WHATSAPP.caracas) + '?text=' + encodeURIComponent(text);
+const plural = (n, a, b) => n + ' ' + (n === 1 ? a : b);
+const fullName = w => w.brand + ' ' + w.model + ' · ' + w.variant;
+const store = {
+  get(k, d){ try{ const v = JSON.parse(localStorage.getItem('lumio-' + k)); return v ?? d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('lumio-' + k, JSON.stringify(v)); }catch(e){} }
+};
+
+/* Ilustración para modelos sin foto */
+function watchSVG(label){
+  let marks=''; for (let i=0;i<12;i++){ const big=i%3===0; marks += `<rect x="${big?118:119}" y="75" width="${big?4:2}" height="${big?11:7}" fill="#F2F0EA" transform="rotate(${i*30} 120 120)"/>`; }
+  const strap = `<rect x="88" y="0" width="64" height="72" fill="#C9CCD1"/><rect x="88" y="168" width="64" height="72" fill="#C9CCD1"/>` + [14,32,50,186,204,222].map(y=>`<line x1="88" y1="${y}" x2="152" y2="${y}" stroke="#8F949B" stroke-width="1.5"/>`).join('');
+  return `<svg viewBox="0 0 240 240" role="img" aria-label="${label}">${strap}<circle cx="120" cy="120" r="62" fill="#C9CCD1"/><circle cx="120" cy="120" r="56" fill="#AEB2B8"/><rect x="184" y="112" width="11" height="16" rx="3" fill="#A9ADB3"/><circle cx="120" cy="120" r="50" fill="#1E2024"/>${marks}<line x1="120" y1="120" x2="120" y2="86" stroke="#F2F0EA" stroke-width="3.5" stroke-linecap="round"/><line x1="120" y1="120" x2="144" y2="139" stroke="#F2F0EA" stroke-width="5" stroke-linecap="round"/><circle cx="120" cy="120" r="4" fill="#A68A56"/></svg>`;
+}
+const photos = w => [PHOTOS[w.id], ...(GALLERY[w.id] || [])].filter(Boolean);
+/* Tarjetas y listas usan la miniatura liviana (img/cat/m/); la ficha usa la foto completa */
+const thumb = src => src && src.startsWith('img/cat/') ? src.replace('img/cat/', 'img/cat/m/') : src;
+const art = (w, i=0, full=false) => { const p = photos(w); return p.length ? `<img src="${full ? p[i] : thumb(p[i])}" alt="${fullName(w)}" loading="lazy" decoding="async">` : watchSVG('Ilustración del ' + fullName(w)); };
+
+/* ===== Carrito (se guarda en este navegador; el pedido se envía por WhatsApp) ===== */
+let cart = store.get('cart', []).filter(it => it && it.id && it.qty > 0);
+const cartSave = () => store.set('cart', cart);
+function cartAdd(id){
+  const w = W.find(x => x.id === id), max = w && !w.encargo ? (w.qty || 1) : 99;
+  const it = cart.find(x => x.id === id); if (it) it.qty = Math.min(max, it.qty + 1); else cart.push({id, qty: 1});
+  cartSave(); renderCart();
+  const b = $('cart-open'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+  openCart();
+}
+function cartQty(id, d){ const it = cart.find(x => x.id === id); if (!it) return; const w = W.find(x => x.id === id), max = w && !w.encargo ? (w.qty || 1) : 99; it.qty = Math.min(max, it.qty + d); if (it.qty < 1) cart = cart.filter(x => x !== it); cartSave(); renderCart(); }
+function renderCart(){
+  const items = cart.map(it => ({...it, w: W.find(w => w.id === it.id)})).filter(it => it.w);
+  const n = cart.reduce((s, it) => s + it.qty, 0);
+  $('cart-count').textContent = n;
+  if (!items.length){
+    $('cart-list').innerHTML = '<li class="cart-empty">' + (cart.length ? 'Cargando tu carrito…' : 'Tu carrito está vacío. Agrega relojes desde su ficha o desde Entrega inmediata.') + '</li>';
+    $('cart-foot').hidden = true; return;
+  }
+  $('cart-foot').hidden = false;
+  $('cart-list').innerHTML = items.map(({id, qty, w}) => `<li class="cart-item"><img src="${thumb(photos(w)[0]) || ''}" alt="" loading="lazy"><div><b>${w.brand} ${w.model}</b><small>${w.variant} · ${w.encargo ? 'Por encargo' : w.transit ? 'Llega pronto' : 'Entrega inmediata'}</small><div class="qty"><button type="button" data-cq="${id}" data-d="-1" aria-label="Uno menos">−</button><span>${qty}</span><button type="button" data-cq="${id}" data-d="1" aria-label="Uno más">+</button></div></div><div><span class="pr">${usd(w.price * qty)}</span><button type="button" class="cart-rm" data-crm="${id}">Quitar</button></div></li>`).join('');
+  const sum = f => items.filter(f).reduce((s, it) => s + it.w.price * it.qty, 0);
+  const now = sum(it => !it.w.encargo && !it.w.transit), soon = sum(it => it.w.transit), enc = sum(it => it.w.encargo), dep = (soon + enc) * ANTICIPO;
+  $('cart-sum').innerHTML = (now ? `<dt>Entrega inmediata</dt><dd>${usd(now)}</dd>` : '') + (soon ? `<dt>Llegan pronto</dt><dd>${usd(soon)}</dd>` : '') + (enc ? `<dt>Por encargo (estimado)</dt><dd>${usd(enc)}</dd>` : '') + (dep ? `<dt>Anticipo para reservar (40%)</dt><dd>${usd(dep)}</dd>` : '') + `<dt class="tot">Total</dt><dd class="tot">${usd(now + soon + enc)}</dd>`;
+  const lines = items.map(({qty, w}) => '• ' + qty + ' × ' + fullName(w) + (w.ref ? ' (' + w.ref + ')' : '') + ' – ' + usd(w.price * qty) + (w.encargo ? ' · por encargo' : w.transit ? ' · llega pronto' : ' · entrega inmediata'));
+  const msg = ['Hola, quiero hacer este pedido:', ...lines, '', 'Total: ' + usd(now + soon + enc) + (enc ? ' (los de encargo son precio estimado)' : ''), dep ? 'Anticipo para reservar (40%): ' + usd(dep) : '', '¿Me confirman disponibilidad y entrega?'].filter(Boolean).join('\n');
+  $('cart-go').href = waLink(msg);
+}
+let cartLast = null;
+function openCart(){ cartLast = document.activeElement; $('cart').hidden = false; $('cart-scrim').hidden = false; document.body.classList.add('modal-open'); $('cart-close').focus({preventScroll:true}); }
+function closeCart(){ $('cart').hidden = true; $('cart-scrim').hidden = true; if (!document.querySelector('.modal:not([hidden])')) document.body.classList.remove('modal-open'); if (cartLast && document.contains(cartLast)) cartLast.focus({preventScroll:true}); }
+$('cart-open').onclick = () => { renderCart(); openCart(); };
+$('cart-close').onclick = closeCart;
+$('cart-scrim').onclick = closeCart;
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cart').hidden) closeCart(); });
+$('cart-list').addEventListener('click', e => { const q = e.target.closest('[data-cq]'); if (q) return cartQty(q.dataset.cq, +q.dataset.d); const r = e.target.closest('[data-crm]'); if (r){ cart = cart.filter(x => x.id !== r.dataset.crm); cartSave(); renderCart(); } });
+document.addEventListener('click', e => { const b = e.target.closest('[data-cart]'); if (b) cartAdd(b.dataset.cart); });
+
+/* ===== Favoritos y comparador ===== */
+let favs = store.get('favs', []).filter(id => W.some(w=>w.id===id) || /^ENC/.test(id));
+let cmp = store.get('cmp', []).filter(id => W.some(w=>w.id===id) || /^ENC/.test(id));
+const heartSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>';
+function toggleFav(id){ favs = favs.includes(id) ? favs.filter(x=>x!==id) : [...favs, id]; store.set('favs', favs); syncAll(); }
+function toggleCmp(id){
+  if (cmp.includes(id)) cmp = cmp.filter(x=>x!==id);
+  else { if (cmp.length >= 3) cmp.shift(); cmp.push(id); }
+  store.set('cmp', cmp); syncAll();
+}
+
+/* ===== Tarjetas ===== */
+const cardHTML = w => `
+  <div class="cw">
+    <button type="button" class="card" data-id="${w.id}">
+      <span class="art">${art(w)}<span class="badge ${w.encargo?'encargo':w.transit?'transit':''}">${w.encargo?'Por encargo':w.transit?'Llega pronto':'Disponible'}</span></span>
+      <span class="info">
+        <span class="brandname">${w.brand}</span>${w.encargo?`<span class="gtag">${w.gender}</span>`:''}
+        <span class="name">${w.model}</span>
+        <span class="ref">${w.variant}</span>
+        <span class="ref">${[w.mm ? String(w.mm).replace('.',',') + ' mm' : '', w.kind, w.box?'Caja y papeles':''].filter(Boolean).join(' · ')}</span>
+        <span class="prow">${w.encargo?'<span class="est">Precio estimado</span>':''}<span class="price">${usd(w.price)}</span></span>
+        ${w.encargo?`<span class="dep">Resérvalo con ${usd(w.price*ANTICIPO)}</span>`:''}
+        ${TASA_BS>0?`<span class="bsp">${bs(w.price)}</span>`:''}
+        <span class="more">${w.encargo ? 'Ver y reservar' : w.transit ? 'Ver y apartar' : 'Ver y pedirlo'} <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+    </button>
+    <button type="button" class="heart" data-fav="${w.id}" aria-pressed="${favs.includes(w.id)}" aria-label="${favs.includes(w.id)?'Quitar de favoritos':'Guardar en favoritos'}: ${w.brand} ${w.model}">${heartSVG}</button>
+  </div>`;
+
+/* ===== Búsqueda ===== */
+const norm = t => String(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const matchQ = (w, q) => { if (!q) return true; const hay = norm([w.brand, w.model, w.variant, w.ref, w.kind, w.gender, w.mm ? w.mm + ' mm' : ''].join(' ')); const hayC = hay.replace(/[\s.\-]/g,''); return norm(q).split(/\s+/).filter(Boolean).every(t => hay.includes(t) || hayC.includes(t.replace(/[.\-]/g,''))); };
+let searchQ = '', encQ = '';
+const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ===== Vitrina ===== */
+const state = Object.assign({brand:'Todas', stock:'Todo', sort:'destacados', kind:''}, store.get('filtros', {}));
+const brands = ['Todas', ...new Set(INV.map(w=>w.brand))];
+const stocks = ['Todo','Disponible ahora','Llega pronto'];
+const kinds = ['Automático','Cuarzo'];
+function chipRow(el, list, key, allowEmpty){
+  el.innerHTML = list.map(v=>`<button type="button" class="chip" aria-pressed="${state[key]===v}" data-v="${v}">${v}</button>`).join('');
+  el.onclick = e => { const b = e.target.closest('.chip'); if(!b) return; state[key] = (allowEmpty && state[key]===b.dataset.v) ? '' : b.dataset.v; store.set('filtros', state); render(); };
+}
+const io = (!REDUCE_EARLY() && 'IntersectionObserver' in window) ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -6% 0px'}) : null;
+function REDUCE_EARLY(){ try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){ return true; } }
+function reveal(root){
+  if (!io) return;
+  const els = root.querySelectorAll('.cw, .services a, main .head');
+  let n = 0;
+  els.forEach(el => { if (el.closest('.modal')) return; const r = el.getBoundingClientRect(); if (r.top > window.innerHeight - 20){ el.classList.add('pre'); el.style.transitionDelay = (n++ % 4) * 90 + 'ms'; io.observe(el); } });
+}
+
+/* ===== Catálogo por encargo ===== */
+let ENCW = [];
+const PRICES = [['', 'Todos los precios'], ['0-300', 'Hasta $300'], ['300-600', '$300 a $600'], ['600-1000', '$600 a $1.000'], ['1000-99999', 'Más de $1.000']];
+const est = Object.assign({brand:'', sort:'destacados', kind:'', gender:'', price:'', style:''}, store.get('filtros-enc2', {}), {style:''});
+/* Estilos: se deducen del nombre y el movimiento de cada reloj, así siguen sirviendo aunque cambien las marcas */
+const STYLES = [
+  ['Cronógrafo', w => /chrono|cronó/i.test(w.model + ' ' + w.variant)],
+  ['Buceo', w => /diver|seastar|prospex|promaster|duro|marine|aqua|navy|deep|sumo|turtle|200 ?m/i.test(w.model + ' ' + w.variant)],
+  ['Vestir', w => /classic|carson|gentleman|bambino|tradition|everytime|chemin|le locle|presage|dress|jazzmaster|conquest|baroncelli|heritage/i.test(w.model)],
+  ['Automático', w => w.kind === 'Automático'],
+  ['Solar', w => w.kind === 'Solar' || /eco-?drive|solar/i.test(w.model + ' ' + w.variant)]
+];
+const styleFn = n => (STYLES.find(s => s[0] === n) || [, () => true])[1];
+let encShow = 12;
+const encSave = () => { encShow = 12; store.set('filtros-enc2', Object.assign({}, est, {style:''})); renderEnc(true); };
+function encChips(el, list, key){
+  el.innerHTML = list.map(([v,l])=>`<button type="button" class="chip" aria-pressed="${est[key]===v}" data-v="${v}">${l}</button>`).join('');
+  el.onclick = e => { const b = e.target.closest('.chip'); if(!b) return; est[key] = b.dataset.v; encSave(); };
+}
+/* Cambio de grilla: sale rápido, entra en cascada (solo filtros, búsqueda, orden y estilo) */
+let swapTok = 0;
+async function swapGrid(el, html){
+  const tok = ++swapTok;
+  if (REDUCE_EARLY() || !el.animate){ el.innerHTML = html; return; }
+  const out = el.animate([{opacity:1}, {opacity:0, transform:'translateY(8px)'}], {duration:220, easing:'cubic-bezier(.4,0,1,1)', fill:'forwards'});
+  try { await out.finished; } catch(e){}
+  if (tok !== swapTok){ out.cancel(); return; }
+  el.innerHTML = html; out.cancel();
+  el.querySelectorAll('.cw').forEach((c, i) => { if (c.getBoundingClientRect().top < innerHeight) c.animate([{opacity:0, transform:'translateY(18px) scale(.985)'}, {opacity:1, transform:'none'}], {duration:800, delay:Math.min(i, 8) * 45, easing:'cubic-bezier(.16,1,.3,1)', fill:'backwards'}); });
+}
+function renderEnc(anim){
+  if (!ENC_READY){ $('enc-grid').innerHTML = '<p class="loading-cat">Cargando el catálogo…</p>'; $('enc-more').parentNode.hidden = true; return; }
+  const base = ENCW.filter(w => !est.gender || w.gender === est.gender);
+  const cnt = {}; base.forEach(w => cnt[w.brand] = (cnt[w.brand]||0) + 1);
+  const bl = Object.keys(cnt).sort((a,b) => cnt[b]-cnt[a] || a.localeCompare(b));
+  if (est.brand && !cnt[est.brand]) est.brand = '';
+  encChips($('enc-gender'), [['', 'Todos'], ['Hombre', 'Hombre'], ['Mujer', 'Mujer']], 'gender');
+  const ks = ['Automático','Cuarzo','Solar','Cuerda manual'].filter(k => ENCW.some(w => w.kind === k));
+  encChips($('enc-kind'), [['', 'Todos'], ...ks.map(k => [k,k])], 'kind');
+  $('enc-brand').innerHTML = `<option value="">Todas las marcas</option>` + bl.map(b => `<option value="${b}">${b} (${cnt[b]})</option>`).join('');
+  $('enc-brand').value = est.brand;
+  $('enc-price').innerHTML = PRICES.map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
+  $('enc-price').value = est.price;
+  $('enc-sort').value = est.sort;
+  const [pmin, pmax] = est.price ? est.price.split('-').map(Number) : [0, Infinity];
+  const list = base.filter(w => (!est.style || styleFn(est.style)(w)) && (!est.brand || w.brand===est.brand) && (!est.kind || w.kind===est.kind) && w.price >= pmin && w.price < pmax && matchQ(w, encQ));
+  list.sort({asc:(a,b)=>a.price-b.price, desc:(a,b)=>b.price-a.price}[est.sort] || ((a,b)=>(a.gender===b.gender?0:(a.gender==='Hombre'?-1:1)) || a.rank-b.rank));
+  $('enc-clear').hidden = !(est.brand || est.kind || est.gender || est.price || est.style || encQ);
+  document.querySelectorAll('.stile').forEach(b => b.setAttribute('aria-pressed', b.dataset.style === est.style));
+  const cntTxt = n => plural(n,'modelo','modelos') + ' por encargo';
+  if (anim && !REDUCE_EARLY()) countUp($('enc-count'), list.length, cntTxt, 600); else $('enc-count').textContent = cntTxt(list.length);
+  const html = list.length ? list.slice(0, encShow).map(cardHTML).join('') : (encQ ? '<p class="empty">No encontramos «' + esc(encQ) + '» en el catálogo, pero igual te lo podemos traer. <a href="#encargo">Pídelo aquí</a> o por WhatsApp.</p>' : '<p class="empty">No hay relojes con esos filtros. Prueba otra combinación o pídenos el que buscas.</p><p class="empty-act"><button type="button" class="btn btn-ghost" onclick="document.getElementById(\'enc-clear\').click()">Quitar filtros</button> <a class="btn btn-accent" href="#encargo">Solicitar cualquier modelo</a></p>');
+  $('enc-more').parentNode.hidden = list.length <= encShow;
+  $('enc-more').textContent = 'Ver más relojes (' + (list.length - encShow) + ')';
+  if (anim) swapGrid($('enc-grid'), html).then(() => reveal($('enc-grid')));
+  else { $('enc-grid').innerHTML = html; reveal($('enc-grid')); }
+}
+$('enc-sort').onchange = e => { est.sort = e.target.value; encSave(); };
+$('enc-brand').onchange = e => { est.brand = e.target.value; encSave(); };
+$('enc-price').onchange = e => { est.price = e.target.value; encSave(); };
+$('enc-clear').onclick = () => { Object.assign(est, {brand:'', kind:'', gender:'', price:'', style:''}); encQ = ''; $('enc-q').value = ''; $('enc-q-x').hidden = true; encSave(); };
+(function(){
+  const wire = (inp, x, set, run) => {
+    let t; inp.addEventListener('input', () => { x.hidden = !inp.value; clearTimeout(t); t = setTimeout(() => { set(inp.value.trim()); run(); }, 160); });
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') inp.blur(); });
+    x.onclick = () => { inp.value = ''; x.hidden = true; set(''); run(); inp.focus(); };
+  };
+  wire($('enc-q'), $('enc-q-x'), v => encQ = v, () => { encShow = 12; renderEnc(true); });
+})();
+$('enc-more').onclick = () => { encShow += 12; renderEnc(); };
+document.querySelectorAll('.enc-time').forEach(el => el.textContent = TIEMPO_ENCARGO);
+
+/* ===== Franja de marcas: se arma sola con todas las marcas de la vitrina y del catálogo por encargo ===== */
+function buildBand(){
+  const cnt = {}; W.forEach(w => cnt[w.brand] = (cnt[w.brand] || 0) + 1);
+  const list = Object.keys(cnt).sort((a,b) => cnt[b] - cnt[a] || a.localeCompare(b));
+  const set = dup => list.map(b => `<span${dup?' class="dup"':''}>${b.toUpperCase()}</span><i${dup?' class="dup"':''} aria-hidden="true"></i>`).join('');
+  const band = document.querySelector('.brandband'); if (!band) return;
+  band.setAttribute('aria-label', 'Marcas que trabajamos: ' + list.join(', '));
+  const t = band.querySelector('.track'); t.innerHTML = set(false) + set(true);
+  t.style.animationDuration = Math.max(40, list.length * 6) + 's';
+}
+buildBand();
+
+/* Clics en tarjetas y corazones, en cualquier lista */
+document.addEventListener('click', e => {
+  const h = e.target.closest('[data-fav]'); if (h){ toggleFav(h.dataset.fav); h.classList.remove('pop'); void h.offsetWidth; h.classList.add('pop'); return; }
+  const c = e.target.closest('.card[data-id], .mini[data-id]'); if (c){ openWatch(c.dataset.id); }
+});
+
+/* ===== Ficha ===== */
+let current = null;
+const ORDER = () => [...W].sort((a,b)=>a.featured-b.featured);
+const waMsg = w => w.encargo
+  ? 'Hola, quiero reservar por encargo el ' + fullName(w) + (w.ref?' ('+w.ref+')':'') + ', precio estimado ' + usd(w.price) + '. ¿Me confirman el precio para pagar el 40%?'
+  : 'Hola, me interesa el ' + fullName(w) + (w.ref?' ('+w.ref+')':'') + ' de ' + usd(w.price) + '. ' + (w.transit?'Quiero apartarlo.':'¿Sigue disponible?');
+function openWatchLinks(w){
+  $('bb-wa').href = waLink(waMsg(w));
+  $('bb-wa').textContent = w.encargo ? 'Reservar 40%' : w.transit ? 'Apartar' : 'Lo quiero';
+  $('bb-wa').classList.toggle('btn-reserve', !!(w.transit || w.encargo));
+  $('d-wa').classList.toggle('btn-reserve', !!(w.transit || w.encargo));
+  $('bb-name').textContent = w.brand + ' ' + w.model;
+  $('bb-price').textContent = usd(w.price);
+  $('d-wa').href = waLink(waMsg(w));
+  $('d-notify').href = waLink('Hola, avísenme cuando llegue el ' + fullName(w) + (w.ref?' ('+w.ref+')':'') + '.');
+}
+function openWatch(id){
+  const w = W.find(x=>x.id===id); if(!w) return;
+  current = w;
+  const st = storyOf(w);
+  const p = photos(w);
+  $('d-main').innerHTML = art(w, 0, true);
+  $('d-thumbs').innerHTML = p.length > 1 ? p.map((src,i)=>`<button type="button" aria-pressed="${i===0}" aria-label="Foto ${i+1}" data-i="${i}"><img src="${src}" alt=""></button>`).join('') : '';
+  $('d-thumbs').onclick = e => { const b = e.target.closest('button'); if(!b) return; $('d-main').innerHTML = art(w, +b.dataset.i, true);
+    const im = $('d-main').querySelector('img'); if (im && !REDUCE && im.animate){ im.style.animation = 'none'; im.animate([{opacity:0, transform:'scale(1.03)', filter:'blur(4px)'}, {opacity:1, transform:'none', filter:'none'}], {duration:700, easing:'cubic-bezier(.16,1,.3,1)'}); }
+    [...$('d-thumbs').children].forEach(x=>x.setAttribute('aria-pressed', x===b)); };
+  $('d-crumb-brand').textContent = w.brand;
+  const cr = document.querySelector('.modal[data-modal="ficha"] .crumb a'); cr.textContent = w.encargo ? 'Por encargo' : 'Vitrina'; cr.setAttribute('href', w.encargo ? '#por-encargo' : '#relojes');
+  $('d-crumb-model').textContent = w.model;
+  $('d-brand').textContent = w.brand + ' · ' + w.variant;
+  $('d-title').textContent = w.model;
+  $('d-tag').textContent = st ? st.tag : (w.encargo ? 'Nuevo y original, por encargo en ' + TIEMPO_ENCARGO + '.' : '');
+  $('d-price').textContent = usd(w.price) + (w.encargo ? ' · precio estimado' : '');
+  $('d-bs').textContent = bs(w.price) ? bs(w.price) + (TASA_FECHA ? ' a la tasa del ' + TASA_FECHA : '') : '';
+  $('d-story-eye').textContent = st ? st.eye : '';
+  $('d-story-h').textContent = st ? st.h : '';
+  $('d-story-p').textContent = st ? st.p : '';
+  $('sec-story').hidden = !st;
+  $('d-feats').innerHTML = st ? st.f.map(f => `<div class="feat"><span class="k">${f[0]}</span><h5>${f[1]}</h5><p>${f[2]}</p></div>`).join('') : '';
+  $('sec-feat').hidden = !st;
+  $('d-q').textContent = st ? st.q : '';
+  $('d-a').textContent = st ? st.a : '';
+  $('sec-q').hidden = !st;
+  const rows = [['Referencia', w.ref], ['Versión', w.variant], ...Object.entries(w.specs||{}), ['Condición','Nuevo'],
+    ['Disponibilidad', w.encargo ? 'Por encargo · ' + TIEMPO_ENCARGO : w.transit ? 'En camino' + (w.qty>1?' · '+w.qty+' unidades':'') : 'Disponible para entrega']].filter(r=>r[1]);
+  $('d-specs').innerHTML = rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('');
+  $('d-box-text').innerHTML = w.encargo ? '<strong>Así llega tu reloj:</strong> nuevo y original, en su caja. Lo pedimos cuando confirmas la reserva.' : w.box ? '<strong>Así llega tu reloj:</strong> nuevo, en su caja original con manual y tarjeta de garantía del fabricante.' : '<strong>Así llega tu reloj:</strong> nuevo, sin caja ni papeles originales.';
+  $('d-apart').hidden = !(w.transit || w.encargo);
+  if (w.transit) $('d-apart').textContent = 'Apártalo hoy con ' + usd(w.price*ANTICIPO) + ' (40%) y paga el resto cuando llegue. Si es con envío nacional, pagas el resto al llegar y lo enviamos ese mismo día con su guía.';
+  if (w.encargo) $('d-apart').textContent = 'Resérvalo con ' + usd(w.price*ANTICIPO) + ' (40%) y paga el 60% restante cuando llegue, en ' + TIEMPO_ENCARGO + '. Con envío nacional pagas el saldo al llegar el reloj y lo enviamos ese mismo día con su guía. Precio estimado, se confirma al reservar.';
+  $('d-wa').textContent = w.encargo ? 'Reservar con 40%' : w.transit ? 'Apartarlo por WhatsApp' : 'Lo quiero';
+  openWatchLinks(w);
+  $('d-notify').hidden = !w.transit;
+  $('d-notify').href = waLink('Hola, avísenme cuando llegue el ' + fullName(w) + (w.ref?' ('+w.ref+')':'') + '.');
+  const sim = W.filter(x => x.id!==w.id && x.model!==w.model && !!x.encargo === !!w.encargo).map(x => ({x, d: (x.brand===w.brand?0:1) + Math.abs(x.price-w.price)/200 + (x.kind===w.kind?0:0.5)})).sort((a,b)=>a.d-b.d).slice(0,3).map(o=>o.x);
+  $('d-similar').innerHTML = sim.map(x => `<button type="button" class="mini" data-id="${x.id}">${art(x)}<span><b>${x.brand} ${x.model}</b><span class="small">${x.variant}</span><span>${usd(x.price)}</span></span></button>`).join('');
+  const o = ORDER().filter(x => !!x.encargo === !!w.encargo); const nx = o[(o.findIndex(x=>x.id===w.id) + 1) % o.length];
+  $('d-next').dataset.next = nx.id;
+  $('d-next-name').textContent = nx.brand + ' ' + nx.model + (nx.duro ? ' · ' + nx.variant.split(' · ')[0] : '');
+  syncAll();
+  openModal('ficha');
+}
+$('d-fav').onclick = () => current && toggleFav(current.id);
+$('d-cart').onclick = () => { if (current){ closeModal(); cartAdd(current.id); } };
+$('d-cmp').onclick = () => current && toggleCmp(current.id);
+$('d-next').onclick = () => openWatch($('d-next').dataset.next);
+document.querySelector('.modal[data-modal="ficha"] .quickbar').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  const el = $(b.dataset.go); if (el) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+});
+
+/* ===== Favoritos, comparador y estados ===== */
+function syncAll(){
+  $('fav-count').textContent = favs.length;
+  document.querySelectorAll('[data-fav]').forEach(b => { const on = favs.includes(b.dataset.fav); b.setAttribute('aria-pressed', on); });
+  if (current){
+    $('d-fav').textContent = favs.includes(current.id) ? 'Quitar de favoritos' : 'Guardar en favoritos';
+    $('d-cmp').textContent = cmp.includes(current.id) ? 'Quitar del comparador' : 'Añadir al comparador';
+  }
+  const fl = favs.map(id => W.find(w=>w.id===id)).filter(Boolean);
+  $('fav-grid').innerHTML = fl.length ? fl.map(cardHTML).join('') : '<p class="empty">Todavía no tienes favoritos. Toca el corazón de cualquier reloj para guardarlo aquí.</p>';
+  $('fav-actions').hidden = !fl.length;
+  $('fav-send').href = waLink('Hola, me interesan estos relojes:\n' + fl.map(w => '• ' + fullName(w) + ' – ' + usd(w.price)).join('\n'));
+  $('cmp-tray').hidden = !cmp.length || !document.querySelector('.modal:not([hidden])') === false && false;
+  $('cmp-tray').hidden = !cmp.length;
+  $('cmp-label').textContent = 'Comparador: ' + plural(cmp.length, 'reloj', 'relojes');
+  renderCmp();
+}
+$('cmp-clear').onclick = () => { cmp = []; store.set('cmp', cmp); syncAll(); };
+function renderCmp(){
+  $('cmp-pick').innerHTML = W.filter(w => !w.encargo || cmp.includes(w.id)).map(w => `<button type="button" class="chip" aria-pressed="${cmp.includes(w.id)}" data-cmp="${w.id}">${w.brand} ${w.model.replace(' «Marlin»','')}${w.duro ? ' · ' + w.variant.split(' · ')[0].replace('Bisel ','') : ''}</button>`).join('');
+  const L = cmp.map(id => W.find(w=>w.id===id)).filter(Boolean);
+  if (!L.length){ $('cmp-table').innerHTML = '<p class="empty" style="border:0">Elige al menos un reloj de la lista.</p>'; return; }
+  const keys = ['Movimiento','Diámetro','Grosor','Cristal','Resistencia al agua','Reserva de marcha','Funciones','Brazalete','Correa','Bisel'];
+  const row = (label, f) => `<tr><th scope="row">${label}</th>${L.map(w=>`<td>${f(w) || '—'}</td>`).join('')}</tr>`;
+  $('cmp-table').innerHTML = `<table class="cmp"><thead><tr><th></th>${L.map(w=>`<th scope="col" style="background:#fff;text-align:center"><button type="button" class="mini" data-id="${w.id}" style="flex-direction:column;border:0;text-align:center">${art(w)}<span><b>${w.brand} ${w.model}</b><span class="small">${w.variant}</span></span></button></th>`).join('')}</tr></thead><tbody>
+    ${row('Precio', w => `<b>${usd(w.price)}</b>${TASA_BS>0?'<br><span class="bsp">'+bs(w.price)+'</span>':''}`)}
+    ${row('Disponibilidad', w => w.encargo ? 'Por encargo' : w.transit ? 'Llega pronto' : 'Disponible')}
+    ${row('Tipo', w => w.kind)}
+    ${keys.map(k => row(k, w => (w.specs||{})[k] || (k==='Diámetro' && w.specs && w.specs['Tamaño de caja']) || '')).join('')}
+    ${row('Caja y papeles', w => w.box ? 'Sí' : 'Por confirmar')}
+  </tbody></table>`;
+}
+$('cmp-pick').onclick = e => { const b = e.target.closest('[data-cmp]'); if (b) toggleCmp(b.dataset.cmp); };
+$('fav-open').onclick = () => { lastFocus = $('fav-open'); openModal('favoritos'); };
+
+/* ===== Guía de tallas ===== */
+function sizeFor(cm){
+  if (cm < 15) return [34,38]; if (cm < 17) return [36,40]; if (cm < 19) return [39,42]; if (cm < 21) return [41,45]; return [43,48];
+}
+function wrist(){
+  const cm = parseFloat($('wrist').value);
+  if (isNaN(cm) || cm < 12 || cm > 26){ $('wrist-out').textContent = '—'; $('wrist-match').textContent = 'Escribe una medida entre 12 y 26 cm.'; $('wrist-grid').innerHTML=''; return; }
+  const [a,b] = sizeFor(cm);
+  $('wrist-out').textContent = a + ' a ' + b + ' mm';
+  const m = INV.filter(w => w.mm >= a - 0.5 && w.mm <= b + 0.5);
+  const seen = new Set(); const uniq = m.filter(w => { const k = w.brand + w.model; if (seen.has(k)) return false; seen.add(k); return true; });
+  $('wrist-match').textContent = uniq.length ? 'De nuestra vitrina, te quedan bien:' : 'Ninguno de la vitrina está en ese rango. Pídelo por encargo y te lo buscamos.';
+  $('wrist-grid').innerHTML = uniq.map(cardHTML).join('');
+}
+$('wrist').addEventListener('input', wrist);
+
+/* ===== Encargo ===== */
+function quote(){
+  const brand = $('f-brand').value.trim(), model = $('f-model').value.trim();
+  $('q-title').textContent = [brand, model].filter(Boolean).join(' ') || 'Tu encargo';
+  $('q-time').textContent = TIEMPO_ENCARGO;
+  return {brand, model};
+}
+['f-brand','f-model'].forEach(id => $(id).addEventListener('input', quote));
+$('req').addEventListener('submit', e => {
+  e.preventDefault();
+  const q = quote();
+  if (!q.brand || !q.model){ $('f-err').hidden = false; $(q.brand ? 'f-model' : 'f-brand').focus(); return; }
+  $('f-err').hidden = true;
+  const v = id => $(id).value.trim();
+  const msg = ['Hola, quiero pedir un reloj por encargo.', 'Marca: ' + q.brand, 'Modelo: ' + q.model,
+    v('f-ref') ? 'Referencia: ' + v('f-ref') : '',
+    v('f-name') ? 'Nombre: ' + v('f-name') : '',
+    v('f-city') ? 'Ciudad: ' + v('f-city') : ''].filter(Boolean).join('\n');
+  const a = document.createElement('a'); a.href = waLink(msg); a.target = '_blank'; a.rel = 'noopener'; a.click();
+});
+
+/* ===== Ventanas emergentes (se abren con clic) ===== */
+const MODALS = {ficha:'', encargo:'Pide un reloj', guias:'Guía para elegir', tallas:'Guía de tallas', cuidado:'Cuidado del reloj', ayuda:'Preguntas frecuentes', nosotros:'Nosotros', favoritos:'Favoritos', comparar:'Comparar relojes', terminos:'Términos', privacidad:'Privacidad'};
+let lastFocus = null;
+function setCurrent(t){ document.querySelectorAll('nav a').forEach(n => n.getAttribute('href') === '#' + t ? n.setAttribute('aria-current','page') : n.removeAttribute('aria-current')); }
+function openModal(name){
+  if (!(name in MODALS)) return;
+  clearTimeout(closeT);
+  document.querySelectorAll('.modal').forEach(m => { m.classList.remove('closing'); m.hidden = m.dataset.modal !== name; });
+  document.body.classList.add('modal-open');
+  setCurrent(name);
+  document.title = (MODALS[name] || (current ? current.brand + ' ' + current.model : '')) + ' · ' + MARCA + ' Relojes';
+  if (name === 'tallas') wrist();
+  const m = document.querySelector('.modal[data-modal="' + name + '"]');
+  m.scrollTop = 0;
+  const f = m.querySelector('.modal-close'); if (f) f.focus({preventScroll:true});
+}
+let closeT = null;
+function closeModal(){
+  const open = [...document.querySelectorAll('.modal:not([hidden])')];
+  if (REDUCE || !open.length) open.forEach(m => { m.hidden = true; });
+  else {
+    /* sale con un fundido corto; hidden se pone al terminar (con respaldo por si no hay animationend) */
+    const hide = () => { clearTimeout(closeT); open.forEach(m => { if (m.classList.contains('closing')){ m.hidden = true; m.classList.remove('closing'); } }); };
+    open.forEach(m => { m.classList.add('closing'); m.addEventListener('animationend', function f(e){ if (e.target !== m) return; m.removeEventListener('animationend', f); hide(); }); });
+    clearTimeout(closeT); closeT = setTimeout(hide, 400);
+  }
+  document.body.classList.remove('modal-open');
+  setCurrent('');
+  document.title = MARCA + ' Relojes';
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+const goCatalog = () => $('catalogo').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (a){
+    const t = a.getAttribute('href').slice(1);
+    if (t in MODALS){ e.preventDefault(); if (!document.querySelector('.modal:not([hidden])')) lastFocus = a; openModal(t); return; }
+    if (t === 'por-encargo'){
+      e.preventDefault();
+      if (document.querySelector('.modal:not([hidden])')) closeModal();
+      $('catalogo-encargo').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+      return;
+    }
+    if (t === 'relojes' || t === 'inicio' || t === ''){
+      e.preventDefault();
+      if (document.querySelector('.modal:not([hidden])')) closeModal();
+      if (t === 'relojes') goCatalog(); else window.scrollTo(0,0);
+      setCurrent(t);
+      return;
+    }
+  }
+  const card = e.target.closest('.card[data-id], .mini[data-id]');
+  if (card && !document.querySelector('.modal:not([hidden])')) lastFocus = card;
+  if (e.target.closest('.modal-close') || (e.target.classList && e.target.classList.contains('modal'))) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.modal:not([hidden])')) closeModal(); });
+
+/* ===== Menú en el teléfono ===== */
+const hdr = document.querySelector('header');
+function setMenu(open){
+  const was = hdr.classList.contains('open');
+  hdr.classList.toggle('open', open); $('menu-btn').setAttribute('aria-expanded', open); $('menu-btn').setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (open && !was){ const a = document.querySelector('#main-nav a'); if (a) a.focus({preventScroll:true}); }
+  else if (!open && was && !document.querySelector('.modal:not([hidden])')) $('menu-btn').focus({preventScroll:true});
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && hdr.classList.contains('open')) setMenu(false); });
+$('menu-btn').onclick = () => setMenu(!hdr.classList.contains('open'));
+$('main-nav').addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+$('fav-open').addEventListener('click', () => setMenu(false));
+
+/* ===== Arranque ===== */
+/* ===== Portada: el carrete de relojes que pasa entre las dos mitades de la frase ===== */
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PHONE = () => matchMedia('(max-width: 900px)').matches;
+/* Cómo funciona en el teléfono: el verbo pegajoso se detiene antes del texto, nunca lo pisa */
+(function(){
+  const fit = () => document.querySelectorAll('.verbs > section').forEach(sec => { const say = sec.querySelector('.say'); sec.style.paddingBottom = PHONE() && say ? (say.offsetHeight + 24 + 20) + 'px' : ''; });
+  fit(); addEventListener('resize', fit); if (document.fonts) document.fonts.ready.then(fit);
+})();
+const REEL = (() => { const seen = new Set(); const all = [...INV].sort((a,b)=>a.featured-b.featured).filter(w => { const k = w.duro ? 'duro' : w.brand + w.model; if (seen.has(k) || !photos(w).length) return false; seen.add(k); return true; }); const pick = ['INV-004','INV-006','INV-007','INV-012'].map(id => all.find(w => w.id === id) || INV.find(w => w.id === id)).filter(Boolean); return (pick.length === 4 ? pick : all).slice(0, 4); })();
+/* En el teléfono se usa la versión de 810 px del video (1,6 MB en vez de 3,3 MB) */
+const HERO_VIDEO = {'INV-004': [matchMedia('(max-width: 700px)').matches ? 'img/hero-movil.mp4' : 'img/hero.mp4', 'img/hero-poster.webp']};
+$('reel-track').innerHTML = REEL.map((w,i) => `<button type="button" class="frame${i===0?' on':''}" data-open="${w.id}" aria-label="Ver ficha del ${esc(fullName(w))}" ${i?'tabindex="-1" aria-hidden="true"':''}>${HERO_VIDEO[w.id] ? `<video src="${HERO_VIDEO[w.id][0]}" poster="${HERO_VIDEO[w.id][1]}" muted playsinline loop ${REDUCE ? '' : 'autoplay'} preload="metadata" aria-hidden="true"></video>` : `<img src="${photos(w)[0]}" alt="">`}<span class="cap"><b>${w.brand} ${w.model.replace(' «Marlin»','')}</b><span>${w.transit?'Llega pronto · ':''}${usd(w.price)}</span></span></button>`).join('');
+/* Revelados: cada sección entra a su manera (títulos como línea que sube, tarjetas en cascada) */
+(function(){
+  if (REDUCE || !('IntersectionObserver' in window)) return;
+  const mark = (sel, kind, step) => document.querySelectorAll(sel).forEach((el, i) => { if (el.closest('.hero') || el.closest('.modal')) return; el.dataset.rv = kind; if (step) el.style.setProperty('--d', (i % 6) * step + 'ms'); });
+  mark('main h2:not(.verb):not(.sr-only), footer h2', 'line');
+  mark('.styles-top p, .enc-lead, .vit-intro, .two-top p, .deliver, .ask p, .wristbox, .tools', 'fade');
+  mark('.verbs .say', 'fade'); mark('.path', 'rise', 120); mark('.stile', 'rise', 80); mark('.city', 'rise', 120); mark('.band', 'fade', 60); mark('.ft-links li', 'fade', 60);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('rv-in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px', threshold:0.12});
+  const watch = () => document.querySelectorAll('[data-rv]:not(.rv-in)').forEach(el => io.observe(el));
+  watch(); window.__rvWatch = () => { mark('.stile', 'rise', 80); watch(); };
+  /* Red de seguridad: lo que ya pasó por la pantalla (scroll rápido o salto por un enlace) se muestra */
+  let tk = false; addEventListener('scroll', () => { if (tk) return; tk = true; requestAnimationFrame(() => { tk = false; document.querySelectorAll('[data-rv]:not(.rv-in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight * 0.92) el.classList.add('rv-in'); }); }); }, {passive:true});
+})();
+/* Entrega inmediata: solo cuentan los que ya están aquí; los que vienen en camino van aparte */
+function nowReady(){ return INV.filter(w => !w.transit).length; }
+function nowTxt(n){ const t = INV.filter(w => w.transit).length; return plural(n, 'reloj listo', 'relojes listos') + ' para entregar' + (t ? ' · ' + plural(t, 'llega', 'llegan') + ' pronto' : ''); }
+/* Cifras que cuentan al aparecer */
+function countUp(el, to, fmt, d = 1400){
+  if (REDUCE){ el.textContent = fmt(to); return; }
+  const t0 = performance.now(), live = el.hasAttribute('aria-live');
+  if (live) el.setAttribute('aria-busy', 'true');   // el lector de pantalla oye solo la cifra final
+  const step = now => { const p = Math.min(1, (now - t0) / d), e = 1 - Math.pow(1 - p, 4); el.textContent = fmt(Math.round(to * e)); if (p < 1) requestAnimationFrame(step); else if (live) el.removeAttribute('aria-busy'); };
+  requestAnimationFrame(step);
+}
+(function(){
+  const target = $('path-now-b'); if (!target || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.disconnect(); countUp(target, nowReady(), nowTxt); }), {threshold:0.4});
+  io.observe(target);
+})();
+/* El guilloché gira un poco con el scroll */
+/* Bisel con minutero (60 marcas y números cada 5) */
+(function(){
+  const b = $('bezel'); if (!b) return; let s = '<circle cx="300" cy="300" r="292" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="300" cy="300" r="250" fill="none" stroke="currentColor" stroke-width=".6"/>';
+  for (let i = 0; i < 60; i++){ const a = i * Math.PI / 30, big = i % 5 === 0, r1 = big ? 268 : 278; s += '<line x1="' + (300 + r1 * Math.sin(a)).toFixed(1) + '" y1="' + (300 - r1 * Math.cos(a)).toFixed(1) + '" x2="' + (300 + 290 * Math.sin(a)).toFixed(1) + '" y2="' + (300 - 290 * Math.cos(a)).toFixed(1) + '" stroke="currentColor" stroke-width="' + (big ? 2 : .8) + '"/>'; if (big && i) s += '<text x="' + (300 + 258 * Math.sin(a)).toFixed(1) + '" y="' + (300 - 258 * Math.cos(a) + 5).toFixed(1) + '" text-anchor="middle" font-size="14" fill="currentColor" font-family="Jost, sans-serif" letter-spacing="1" transform="rotate(' + (i * 6) + ' ' + (300 + 258 * Math.sin(a)).toFixed(1) + ' ' + (300 - 258 * Math.cos(a)).toFixed(1) + ')">' + i + '</text>'; }
+  s += '<polygon points="300,10 292,26 308,26" fill="currentColor"/>';
+  b.innerHTML = s;
+})();
+/* Barra translúcida al bajar; el reloj de portada crece y el bisel gira con el scroll */
+(function(){
+  const hdr = document.querySelector('header'), stage = document.querySelector('.hero-stage');
+  let tk = false;
+  const upd = () => {
+    tk = false; const y = scrollY;
+    hdr.classList.toggle('scrolled', y > 40);
+    if (REDUCE || PHONE() || !stage) return;
+    const p = Math.min(1, Math.max(0, y / (stage.offsetHeight * .9)));
+    stage.style.setProperty('--hs', (1 + p * .22).toFixed(3));
+    stage.style.setProperty('--bz', (p * 90).toFixed(1) + 'deg');
+    stage.style.setProperty('--ho', (1 - p * 1.2).toFixed(3));
+  };
+  addEventListener('scroll', () => { if (!tk){ tk = true; requestAnimationFrame(upd); } }, {passive:true});
+  upd();
+})();
+addEventListener('scroll', () => { const g = document.querySelector('#guilloche'); if (g && !REDUCE) g.style.rotate = (scrollY * 0.03) + 'deg'; }, {passive:true});
+(function(){
+  let s = '<g fill="none" stroke="currentColor">';
+  for (let i = 0; i < 240; i++){ const a = i * Math.PI / 120, r1 = i % 4 ? 300 : 260; s += '<line x1="' + (500 + r1 * Math.cos(a)).toFixed(1) + '" y1="' + (500 + r1 * Math.sin(a)).toFixed(1) + '" x2="' + (500 + 490 * Math.cos(a)).toFixed(1) + '" y2="' + (500 + 490 * Math.sin(a)).toFixed(1) + '" stroke-width="' + (i % 20 ? .6 : 1.6) + '"/>'; }
+  for (const r of [200, 240, 250, 498]) s += '<circle cx="500" cy="500" r="' + r + '" stroke-width="' + (r === 498 ? 1.5 : .8) + '"/>';
+  $('guilloche').innerHTML = s + '</g>';
+})();
+/* Los relojes se turnan en el mismo lugar, en bucle; el del video se queda lo que dura el video */
+let reelI = 0, reelTimer = null, reelPaused = false;
+function reelShow(n){
+  const fr = [...$('reel-track').children]; if (!fr.length) return;
+  const prev = fr[reelI]; reelI = (n + fr.length) % fr.length;
+  fr.forEach((f, k) => { const on = k === reelI; f.classList.toggle('on', on); f.classList.toggle('out', f === prev && !on); f.tabIndex = on ? 0 : -1; on ? f.removeAttribute('aria-hidden') : f.setAttribute('aria-hidden', 'true'); });
+  const v = fr[reelI].querySelector('video'); if (v && !REDUCE){ v.currentTime = 0; v.play().catch(() => {}); }
+}
+function reelNext(){
+  clearTimeout(reelTimer); if (REDUCE) return;
+  const hold = $('reel-track').children[reelI]?.querySelector('video') ? 6000 : 3600;
+  const rl = $('reel'); rl.style.setProperty('--hold', hold + 'ms'); rl.classList.remove('tick'); void rl.offsetWidth; rl.classList.add('tick');
+  reelTimer = setTimeout(() => { if (!reelPaused && !document.hidden && !document.querySelector('.modal:not([hidden])')) reelShow(reelI + 1); reelNext(); }, hold);
+}
+function phoneReel(){ if (!reelTimer) reelNext(); }
+const pauseReel = p => { reelPaused = p; $('reel').classList.toggle('paused', p); };
+$('reel').addEventListener('mouseenter', () => pauseReel(true));
+$('reel').addEventListener('mouseleave', () => pauseReel(false));
+$('reel').addEventListener('focusin', () => pauseReel(true));
+$('reel').addEventListener('focusout', () => pauseReel(false));
+/* El reloj de la portada sigue al cursor (solo puntero fino y sin reduced-motion) */
+(function(){
+  if (REDUCE || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const st = document.querySelector('.hero-stage'), r = $('reel'); let raf = 0, px = 0, py = 0;
+  st.addEventListener('pointermove', e => {
+    const b = st.getBoundingClientRect(); px = (e.clientX - b.left) / b.width - .5; py = (e.clientY - b.top) / b.height - .5;
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; if (PHONE()) return; r.style.setProperty('--rx', (-py * 6).toFixed(2) + 'deg'); r.style.setProperty('--ry', (px * 6).toFixed(2) + 'deg'); r.style.setProperty('--lx', (50 + px * 16).toFixed(1) + '%'); });
+  });
+  st.addEventListener('pointerleave', () => ['--rx', '--ry', '--lx'].forEach(k => r.style.removeProperty(k)));
+})();
+
+/* ===== Vitrina: lista activa, foto fija y la medida de tu muñeca ===== */
+let vActive = null;
+function wristRange(){ const cm = parseFloat($('wrist-cm').value); return (cm >= 12 && cm <= 26) ? sizeFor(cm) : null; }
+const fits = (w, r) => r && w.mm >= r[0] - 0.5 && w.mm <= r[1] + 0.5;
+function render(){
+  const list = [...INV].sort((a,b)=>a.featured-b.featured), r = wristRange();
+  const n = list.filter(w => fits(w, r)).length;
+  $('wrist-say').innerHTML = r ? `te queda una caja de <b>${r[0]} a ${r[1]} mm</b> · ${n ? plural(n, 'reloj', 'relojes') + ' de la vitrina' : 'ninguno en vitrina, pídelo <a href="#por-encargo">por encargo</a>'}` : 'escribe una medida entre 12 y 26 cm';
+  $('vit-photo').innerHTML = list.map(w => `<img src="${photos(w)[0]}" alt="" data-id="${w.id}" loading="lazy">`).join('') + '<span class="fit" id="vit-fit" hidden></span>';
+  $('vlist').innerHTML = list.map(w => { const st = storyOf(w); return `
+    <li class="vrow" data-id="${w.id}">
+      <button type="button" class="vhead" aria-expanded="false" aria-controls="vb-${w.id}">
+        <span class="nm">${w.brand} ${w.model}${fits(w, r) ? '<span class="tag">Te queda</span>' : ''}<small>${w.variant}</small></span>
+        <span class="pr">${w.transit ? '<span class="soon">Llega pronto<i> · </i></span>' : ''}${usd(w.price)}</span>
+      </button>
+      <div class="vbody" id="vb-${w.id}"><div>
+        <span class="vrow-img"><img src="${photos(w)[0]}" alt="${esc(fullName(w))}" loading="lazy"></span>
+        ${st ? `<p>${st.tag} ${st.p.split('. ')[0]}.</p>` : ''}
+        <div class="meta">${[String(w.mm).replace('.', ',') + ' mm', w.kind, w.specs['Resistencia al agua'] ? 'resiste ' + w.specs['Resistencia al agua'].split(' (')[0].replace(', apto para buceo','') : '', w.box ? 'con caja y papeles' : 'sin caja', w.ref ? 'Ref. ' + w.ref : '', (w.specs['Movimiento'] || '').match(/\b\d[A-Z0-9]{2,}\b/) ? 'Calibre ' + w.specs['Movimiento'].match(/\b\d[A-Z0-9]{2,}\b/)[0] : '', w.transit ? 'Apártalo con ' + usd(w.price * ANTICIPO) : ''].filter(Boolean).map(x => '<span>' + x + '</span>').join('')}</div>
+        <div class="row-actions"><button type="button" class="btn btn-accent btn-sm" data-open="${w.id}">Ver ficha</button><a class="btn btn-ghost btn-sm" href="${waLink(waMsg(w))}" target="_blank" rel="noopener">${w.transit ? 'Apartarlo' : 'Lo quiero'} por WhatsApp</a><button type="button" class="btn btn-ghost btn-sm" data-cart="${w.id}">Al carrito</button><button type="button" class="btn btn-ghost btn-sm" data-fav="${w.id}" aria-pressed="${favs.includes(w.id)}">Guardar</button></div>
+      </div></div>
+    </li>`; }).join('');
+  setActive(vActive && list.some(w => w.id === vActive) ? vActive : list[0].id, true);
+}
+function setActive(id, quiet){
+  vActive = id;
+  const w = W.find(x => x.id === id), r = wristRange();
+  document.querySelectorAll('.vrow').forEach(li => { const on = li.dataset.id === id; li.classList.toggle('on', on); li.querySelector('.vhead').setAttribute('aria-expanded', on); });
+  document.querySelectorAll('#vit-photo img').forEach(im => im.classList.toggle('on', im.dataset.id === id));
+  const f = $('vit-fit'); if (f){ f.hidden = !fits(w, r); f.textContent = 'Te queda: ' + String(w.mm).replace('.', ',') + ' mm'; }
+}
+$('vlist').addEventListener('click', e => { const h = e.target.closest('.vhead'); if (h) setActive(h.closest('.vrow').dataset.id); });
+$('vlist').addEventListener('mouseover', e => { if (PHONE()) return; const li = e.target.closest('.vrow'); if (li && li.dataset.id !== vActive) setActive(li.dataset.id); });
+$('wrist-cm').addEventListener('input', render);
+$('path-now-b').textContent = nowTxt(nowReady());
+const nudge = d => { const v = Math.min(26, Math.max(12, (parseFloat($('wrist-cm').value) || 17) + d)); $('wrist-cm').value = v; render(); };
+$('wrist-dn').onclick = () => nudge(-0.5);
+$('wrist-up').onclick = () => nudge(0.5);
+document.addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b){ lastFocus = b; openWatch(b.dataset.open); } });
+
+/* ===== Por encargo: las tarjetas cruzan la foto del lago ===== */
+const TONES = ['var(--sand)', 'var(--sage)', 'var(--clay)', 'var(--steel)', 'var(--straw)'];
+/* Quita el fondo blanco de una foto de catálogo (solo el blanco que toca el borde) para que el reloj conserve sus colores sobre la tarjeta */
+function cutWhite(img){
+  return new Promise(done => {
+    const go = () => { try {
+      const w = img.naturalWidth, h = img.naturalHeight; if (!w) return done();
+      const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d');
+      x.drawImage(img, 0, 0); const d = x.getImageData(0, 0, w, h), p = d.data, bg = new Uint8Array(w * h), q = new Int32Array(w * h); let qh = 0, qt = 0;
+      const isBg = i => { const r = p[i*4], g = p[i*4+1], b = p[i*4+2], mn = Math.min(r, g, b); return mn > 226 && Math.max(r, g, b) - mn < 20; };
+      const push = i => { if (!bg[i] && isBg(i)){ bg[i] = 1; q[qt++] = i; } };
+      for (let i = 0; i < w; i++){ push(i); push((h - 1) * w + i); } for (let j = 0; j < h; j++){ push(j * w); push(j * w + w - 1); }
+      while (qh < qt){ const i = q[qh++], cx = i % w; if (cx > 0) push(i - 1); if (cx < w - 1) push(i + 1); if (i >= w) push(i - w); if (i < w * (h - 1)) push(i + w); }
+      for (let i = 0; i < w * h; i++){
+        if (bg[i]){ p[i*4+3] = 0; continue; }
+        const cx = i % w, edge = (cx > 0 && bg[i-1]) || (cx < w - 1 && bg[i+1]) || (i >= w && bg[i-w]) || (i < w * (h - 1) && bg[i+w]);
+        if (edge){ const mn = Math.min(p[i*4], p[i*4+1], p[i*4+2]); p[i*4+3] = Math.max(60, Math.min(255, (255 - mn) * 5)); }
+      }
+      x.putImageData(d, 0, 0); img.src = c.toDataURL('image/png');
+    } catch(e){} img.classList.add('cut'); done(); };
+    img.complete && img.naturalWidth ? go() : img.addEventListener('load', go, {once:true});
+  });
+}
+function buildShow(){
+  if (!ENC_READY) return;
+  const used = new Set();
+  $('style-row').innerHTML = STYLES.map(([n, fn]) => { const l = ENCW.filter(fn); if (!l.length) return ''; const w = [...l].sort((a,b)=>a.rank-b.rank).find(x => photos(x).length && !used.has(x.model)) || l[0]; used.add(w.model); return `<button type="button" class="stile" data-style="${n}" aria-pressed="${est.style === n}"><img src="${thumb(photos(w)[0]) || ''}" alt="" loading="lazy"><b>${n}</b><span>${plural(l.length, 'modelo', 'modelos')}</span></button>`; }).join('');
+  document.querySelectorAll('#style-row img').forEach(im => cutWhite(im));
+  if (window.__rvWatch) window.__rvWatch();
+}
+$('style-row').addEventListener('click', e => {
+  const b = e.target.closest('.stile'); if (!b) return;
+  est.style = est.style === b.dataset.style ? '' : b.dataset.style; encSave();
+  $('catalogo-encargo').scrollIntoView({behavior: REDUCE ? 'auto' : 'smooth'});
+});
+buildShow();
+
+/* Videos de los pasos: se cargan al acercarse y se pausan al salir; con reduced-motion o ahorro de datos queda el poster */
+(function(){
+  const vids = document.querySelectorAll('.verbs video[data-src]');
+  if (REDUCE || (navigator.connection && navigator.connection.saveData)) return;
+  const on = v => { if (!v.getAttribute('src')) v.src = v.dataset.src; v.play().catch(() => {}); };
+  if (!('IntersectionObserver' in window)){ vids.forEach(on); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) on(e.target); else if (!e.target.paused) e.target.pause(); }), {rootMargin:'200px'});
+  vids.forEach(v => io.observe(v));
+})();
+/* El sello de WhatsApp aparece cuando los botones de la portada ya no se ven */
+(function(){
+  const f = $('wa-float'), foot = document.querySelector('.hero-foot');
+  if (!foot || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(es => es.forEach(e => f.classList.toggle('idle', e.isIntersecting))).observe(foot);
+})();
+
+/* ===== Entradas: la lista de la vitrina fila por fila, las fotos de las ciudades al asentarse ===== */
+(function(){
+  if (REDUCE || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -12% 0px', threshold:0.1});
+  document.querySelectorAll('.vrow, .scard.end').forEach((el, i) => { if (el.getBoundingClientRect().top < innerHeight) return; el.classList.add('rv'); if (el.classList.contains('vrow')) el.style.transitionDelay = (i % 9) * 70 + 'ms'; io.observe(el); });
+})();
+
+addEventListener('resize', phoneReel);
+phoneReel();
+
+if (TASA_BS > 0){ $('tasa-top').hidden = false; $('tasa-top').textContent = ' · Tasa: Bs ' + TASA_BS.toLocaleString('es-VE') + (TASA_FECHA ? ' (' + TASA_FECHA + ')' : ''); $('bs-note').textContent = ' · Referencia en bolívares a la tasa indicada'; }
+
+(function(){
+  CITY = store.get('city', 'caracas'); if (!(CITY in WHATSAPP)) CITY = 'caracas';
+  const mark = () => document.querySelectorAll('.citybtn').forEach(b => b.setAttribute('aria-pressed', b.dataset.city === CITY));
+  mark();
+  document.querySelectorAll('.citybtn').forEach(b => b.onclick = () => { CITY = b.dataset.city; store.set('city', CITY); mark(); refreshWA(); });
+})();
+const WA_CTX = {foto:'Hola, busco un reloj que no vi en la página. Te mando la foto:', duda:'Hola, tengo una pregunta antes de comprar:'};
+function refreshCtxWA(){ document.querySelectorAll('[data-wa]').forEach(a => { const t = WA_CTX[a.dataset.wa]; if (t) a.href = waLink(t); }); }
+function refreshWA(){
+  $('wa-float').href = waLink('Hola, quiero información sobre sus relojes.');
+  refreshCtxWA();
+  $('wa-float').querySelector('span').textContent = 'Escríbenos · ' + (CITY === 'maracaibo' ? 'Maracaibo' : 'Caracas');
+  if (current) openWatchLinks(current);
+  render();
+  syncAll();
+}
+$('wa-float').href = waLink('Hola, quiero información sobre sus relojes.');
+refreshCtxWA();
+document.querySelectorAll('.brand-name').forEach(el => el.textContent = MARCA.toUpperCase());
+document.querySelectorAll('.brand-name-t').forEach(el => el.textContent = MARCA);
+$('copy').textContent = '© 2026 ' + MARCA + ' Relojes';
+quote();
+render();
+renderEnc();
+reveal(document.querySelector('main'));
+syncAll();
+renderCart();
+(function loadEnc(){
+  let left = ENC_FILES.length;
+  const done = () => { if (--left) return;
+    const P = window.ENC_PARTS || {};
+    ['hombre','mujer'].forEach(k => (P[k] || []).forEach(e => {
+      const imgs = e.img || []; delete e.img;
+      W.push(Object.assign({box:false, qty:1, transit:false, encargo:true, featured:100 + e.rank}, e));
+      /* Foto oficial en alta resolución si ya existe (img/cat/<id>.webp); si no, la pequeña del catálogo */
+      const hd = (window.FOTOS_HD || []).includes(e.id);
+      PHOTOS[e.id] = hd ? 'img/cat/' + e.id + '.webp' : imgs[0]; GALLERY[e.id] = hd ? [] : imgs.slice(1);
+    }));
+    ENCW = W.filter(w => w.encargo); ENC_READY = true;
+    renderEnc(); buildBand(); renderCart(); syncAll();
+    buildShow();
+    if ((location.hash || '') === '#por-encargo') $('catalogo-encargo').scrollIntoView();
+  };
+  ENC_FILES.forEach(f => { const sc = document.createElement('script'); sc.src = f; sc.async = true; sc.onload = sc.onerror = done; document.body.appendChild(sc); });
+})();
+
+(function(){ const h = (location.hash || '').slice(1); if (h in MODALS && h !== 'ficha') openModal(h); else if (h === 'relojes') setTimeout(goCatalog, 50); })();
+</script>
+</body>
+</html>
