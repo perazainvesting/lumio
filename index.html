@@ -15,7 +15,7 @@
 
 /* Lumio: el verde de una esfera de noche y el verde luminoso del lume de las agujas */
 :root{
-  --bg:#0A1310; --surface:#121E1A; --ink:#F2EEE5; --muted:#AEB3A8;
+  --bg:#0A1310; --surface:#121E1A; --ink:#F2EEE5; --muted:#BCC0B5;
   --accent:#C9B07A; --accent-ink:#0A1310; --line:rgba(201,176,122,.28);
   --paper:#EFEBE3; --paper-2:#E4DED2; --paper-ink:#0D1714; --paper-muted:#56584F;
   --sand:#DCCFB6; --sage:#C3CDBE; --clay:#DCC2B1; --steel:#CBD0D3; --straw:#E2D7AE;
@@ -34,7 +34,9 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:300;font-size:var(--step-body);line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:400;font-size:var(--step-body);line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* Los textos pequeños y en gris van un poco más gruesos para leerse bien en el teléfono */
+small,.small,.muted,.hero-count,.phone,.topline,figcaption{font-weight:450}
 img{max-width:100%;display:block}
 a{color:inherit}
 p{margin:0}
