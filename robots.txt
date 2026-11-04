@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://perazainvesting.github.io/lumio/sitemap.xml
