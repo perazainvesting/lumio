@@ -43,11 +43,10 @@
 .srch-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:16px 12px 6px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500}
 .srch-h small{font-size:12px;letter-spacing:.04em;text-transform:none;color:var(--muted)}
 .srch-list{list-style:none;margin:0;padding:0}
-.srch-it{width:100%;display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:14px;padding:8px 12px;min-height:72px;border:0;border-radius:16px;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.srch-it{width:100%;display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:14px;padding:8px 12px;min-height:88px;border:0;border-radius:16px;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
 .srch-it:hover,.srch-it:focus-visible,.srch-it.on{background:#ffffff0f;outline:none}
-.srch-ph{width:60px;height:60px;border-radius:12px;background:var(--paper);display:grid;place-items:center;overflow:hidden}
-.srch-ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
-.srch-ph svg{width:70%;height:70%}
+.srch-ph{position:relative;width:60px;height:76px;border-radius:12px;background:var(--paper);overflow:hidden}
+.srch-ph img,.srch-ph svg{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);max-width:none;object-fit:contain;object-position:center;mix-blend-mode:multiply}
 .srch-tx{min-width:0;display:flex;flex-direction:column;gap:1px}
 .srch-tx small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .srch-tx b{font-weight:400;font-size:1rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -86,7 +85,7 @@ body.srch-open{overflow:hidden}
   .srch-bar input{font-size:17px}
   .srch-body{flex:1;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
   .srch-it{grid-template-columns:56px 1fr auto;gap:12px;padding:8px}
-  .srch-ph{width:56px;height:56px}
+  .srch-ph{width:56px;height:72px}
 
   /* Portada en una sola pantalla */
   .hx-stage{gap:18px;padding-top:calc(var(--hdr-h,60px) + 22px + env(safe-area-inset-top,0px));padding-bottom:8px}
